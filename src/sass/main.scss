@@ -1,0 +1,15 @@
+/* FONTS */
+@import url( "https://fonts.googleapis.com/css?family=Comfortaa");
+$logo-font: "Comfortaa", cursive;
+$primary-font: "Arial", sans-serif;
+
+/* COLORS */
+$backdrop: hsla(10, 59%, 52%, 1);
+
+/* LAYOUT */
+$font-title-small: 1.2em;
+$font-title-medium: 1.5em;
+$font-title-big: 1.7em;
+
+/* STYLESHEETS */
+@import "common";
