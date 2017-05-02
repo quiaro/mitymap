@@ -7,11 +7,15 @@ const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
+const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
 const gutil = require('gulp-util');
 
 gulp.task('default', [
   'copy-static',
+  'bundle-materialize-css',
+  'bundle-materialize-js',
   'styles',
   'lint',
   'scripts'], function defaultTask() {
@@ -37,7 +41,8 @@ gulp.task('copy-static', function() {
   return gulp.src([
       'index.html',
       'src/favicon/*.*',
-      'src/*css/**/*.css'
+      'src/*css/**/*.css',
+      'src/*vendor/js/*.js'
   ]).pipe(gulp.dest('dist'));
 });
 
@@ -57,6 +62,20 @@ gulp.task('lint', function lintTask() {
         // lint error, return the stream and pipe to failAfterError last.
         .pipe(eslint.failAfterError());
 });
+
+gulp.task('bundle-materialize-css', function bundleMaterializeTask() {
+  gulp.src('src/vendor/materialize-0.98.2/sass/materialize.scss')
+      .pipe(sass().on('error', sass.logError))
+      .pipe(cleanCSS())
+      .pipe(gulp.dest('dist/vendor/materialize'))
+})
+
+gulp.task('bundle-materialize-js', function bundleMaterializeTask() {
+  gulp.src('src/vendor/materialize-0.98.2/js/*.js')
+      .pipe(concat('materialize.js'))
+      // .pipe(uglify())
+      .pipe(gulp.dest('dist/vendor/materialize'))
+})
 
 gulp.task('scripts', function scriptsTask() {
 

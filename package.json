@@ -17,6 +17,8 @@
     "eslint": "^3.7.1",
     "gulp": "3.9.0",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^3.0.4",
+    "gulp-concat": "^2.6.1",
     "gulp-eslint": "^3.0.1",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^2.4.0",
