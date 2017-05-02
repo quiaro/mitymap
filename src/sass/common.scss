@@ -12,6 +12,7 @@ html {
     font-size: 1em;
     font-family: $primary-font;
     line-height: 1.4;
+    height: 100vh;
 }
 /*
  * Remove text-shadow in selection highlight:
@@ -117,6 +118,7 @@ textarea {
 
 body {
     margin: 0;
+    height: inherit;
 }
 
 button {
