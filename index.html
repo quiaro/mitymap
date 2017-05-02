@@ -17,7 +17,32 @@
 </head>
 
 <body>
+  <div id="side-nav-filters" class="side-nav">
+    <div class='content'>
+      <span>What are you looking for?</span>
+      <div class='input-field'>
+        <select>
+          <option value="" disabled selected>Choose your option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+        <label>Materialize Select</label>
+      </div>
+    </div>
+  </div>
+
+  <div id="side-nav-listing" class="side-nav">
+    <div class='content'>
+      <span>Total properties listed: 4</span>
+    </div>
+  </div>
+
+  <a href="#" data-activates="side-nav-filters" class="filter-menu-control"><i class="material-icons">filter menu</i></a>
+  <a href="#" data-activates="side-nav-listing" class="listing-menu-control"><i class="material-icons">listing menu</i></a>
+
   <div id="map" style="height:100vh;"></div>
+
   <!-- <script>
     var map;
 
