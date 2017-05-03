@@ -18,16 +18,18 @@
 
 <body>
   <div id="side-nav-filters" class="side-nav">
+    <a href="#" class="close">
+      <div class="arrow-left"></div>
+    </a>
     <div class='content'>
-      <span>What are you looking for?</span>
       <div class='input-field'>
         <select>
-          <option value="" disabled selected>Choose your option</option>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
+          <option value="" disabled selected>Choose a property type</option>
+          <option value="1">Apartment</option>
+          <option value="2">House</option>
+          <option value="3">Lot</option>
         </select>
-        <label>Materialize Select</label>
+        <label>What are you looking for?</label>
       </div>
     </div>
   </div>
@@ -38,12 +40,13 @@
     </div>
   </div>
 
-  <a href="#" data-activates="side-nav-filters" class="filter-menu-control"><i class="material-icons">filter menu</i></a>
-  <a href="#" data-activates="side-nav-listing" class="listing-menu-control"><i class="material-icons">listing menu</i></a>
+  <a href="#" id="sidenav-expand" data-activates="side-nav-filters">
+    <div class="arrow-right"></div>
+  </a>
 
   <div id="map" style="height:100vh;"></div>
 
-  <!-- <script>
+  <script>
     var map;
 
     function initMap() {
@@ -53,7 +56,139 @@
           lat: 40.7413549,
           lng: -73.9980244
         },
-        zoom: 13
+        zoom: 13,
+        mapTypeControl: false,
+        streetViewControl: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        styles: [{
+            "featureType": "water",
+            "stylers": [
+                {
+                    "saturation": 43
+                },
+                {
+                    "lightness": -11
+                },
+                {
+                    "hue": "#0088ff"
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "hue": "#ff0000"
+                },
+                {
+                    "saturation": -100
+                },
+                {
+                    "lightness": 99
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "geometry.stroke",
+            "stylers": [
+                {
+                    "color": "#808080"
+                },
+                {
+                    "lightness": 54
+                }
+            ]
+        },
+        {
+            "featureType": "landscape.man_made",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "color": "#ece2d9"
+                }
+            ]
+        },
+        {
+            "featureType": "poi.park",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "color": "#ccdca1"
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "labels.text.fill",
+            "stylers": [
+                {
+                    "color": "#767676"
+                }
+            ]
+        },
+        {
+            "featureType": "road",
+            "elementType": "labels.text.stroke",
+            "stylers": [
+                {
+                    "color": "#ffffff"
+                }
+            ]
+        },
+        {
+            "featureType": "poi",
+            "stylers": [
+                {
+                    "visibility": "off"
+                }
+            ]
+        },
+        {
+            "featureType": "landscape.natural",
+            "elementType": "geometry.fill",
+            "stylers": [
+                {
+                    "visibility": "on"
+                },
+                {
+                    "color": "#b8cb93"
+                }
+            ]
+        },
+        {
+            "featureType": "poi.park",
+            "stylers": [
+                {
+                    "visibility": "on"
+                }
+            ]
+        },
+        {
+            "featureType": "poi.sports_complex",
+            "stylers": [
+                {
+                    "visibility": "on"
+                }
+            ]
+        },
+        {
+            "featureType": "poi.medical",
+            "stylers": [
+                {
+                    "visibility": "on"
+                }
+            ]
+        },
+        {
+            "featureType": "poi.business",
+            "stylers": [
+                {
+                    "visibility": "simplified"
+                }
+            ]
+        }]
       });
       var tribeca = {
         lat: 40.719526,
@@ -65,11 +200,11 @@
         title: 'First Marker!'
       });
     }
-  </script> -->
+  </script>
 
-  <!-- <script async defer
+  <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLRFq44hIVCmUNJ3VztXFigs56bvnGZrM&v=3&callback=initMap">
-  </script> -->
+  </script>
   <script async defer src="vendor/js/jquery-3.2.1.min.js"></script>
   <script async defer src="vendor/materialize/materialize.js"></script>
   <script async defer src="js/main.js"></script>

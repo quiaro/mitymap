@@ -4,8 +4,9 @@ helloWorld();
 
 $(document).ready(function() {
   // Initialize collapse button
-  $(".filter-menu-control").sideNav();
-  $(".listing-menu-control").sideNav();
+  $("#sidenav-expand").sideNav({
+    menuWidth: 380,
+  });
 
   $('select').material_select();
 });

@@ -1,7 +1,7 @@
 /* FONTS */
-@import url( "https://fonts.googleapis.com/css?family=Comfortaa|Roboto");
-$logo-font: "Comfortaa", cursive;
-$primary-font: "Arial", sans-serif;
+@import url( "https://fonts.googleapis.com/css?family=Roboto");
+$logo-font: "Roboto", cursive;
+$primary-font: "Roboto", sans-serif;
 
 /* COLORS */
 $backdrop: hsla(10, 59%, 52%, 1);
@@ -13,3 +13,4 @@ $font-title-big: 1.7em;
 
 /* STYLESHEETS */
 @import "common";
+@import "side_nav";
