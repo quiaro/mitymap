@@ -1,9 +1,9 @@
 const gulp = require('gulp');
+const browserify = require('browserify');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
 const eslint = require('gulp-eslint');
-const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
 const uglify = require('gulp-uglify');
@@ -11,6 +11,7 @@ const concat = require('gulp-concat');
 const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
 const gutil = require('gulp-util');
+const stringify = require('stringify');
 
 gulp.task('default', [
   'copy-static',
@@ -42,7 +43,7 @@ gulp.task('copy-static', function() {
       'index.html',
       'src/favicon/*.*',
       'src/*css/**/*.css',
-      'src/*vendor/js/*.js'
+      '*lib/js/*.js'
   ]).pipe(gulp.dest('dist'));
 });
 
@@ -64,17 +65,17 @@ gulp.task('lint', function lintTask() {
 });
 
 gulp.task('bundle-materialize-css', function bundleMaterializeTask() {
-  gulp.src('src/vendor/materialize-0.98.2/sass/materialize.scss')
+  gulp.src('lib/materialize-0.98.2/sass/materialize.scss')
       .pipe(sass().on('error', sass.logError))
       .pipe(cleanCSS())
-      .pipe(gulp.dest('dist/vendor/materialize'))
+      .pipe(gulp.dest('dist/lib/materialize'))
 })
 
 gulp.task('bundle-materialize-js', function bundleMaterializeTask() {
-  gulp.src('src/vendor/materialize-0.98.2/js/*.js')
+  gulp.src('lib/materialize-0.98.2/js/*.js')
       .pipe(concat('materialize.js'))
       // .pipe(uglify())
-      .pipe(gulp.dest('dist/vendor/materialize'))
+      .pipe(gulp.dest('dist/lib/materialize'))
 })
 
 gulp.task('scripts', function scriptsTask() {
@@ -82,7 +83,8 @@ gulp.task('scripts', function scriptsTask() {
   var b = browserify({
     entries: './src/js/main.js',
     debug: true
-  }).transform('babelify', { presets: ['es2015'] });
+  }).transform('babelify', { presets: ['es2015'] })
+    .transform(stringify(['.html']));
 
   return b.bundle()
     .pipe(source('main.js'))
