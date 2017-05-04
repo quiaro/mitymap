@@ -1,1 +1,6 @@
-<button data-bind="enable: isSideNavOpen">My Button</button>
+<a href="#" class="sidenav-toggle" data-bind="sideNavSetup: true" data-activates="side-nav">
+  <div class="arrow points-right"></div>
+</a>
+<div id="side-nav" class="side-nav">
+  <filters-panel params="isOpen: isFiltersOpen"></filters-panel>
+</div>

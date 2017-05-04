@@ -2,14 +2,14 @@ const ko = require('knockout');
 const template = require('./template.html');
 
 class viewModel {
-  constructor() {
-    this.isFiltersOpen = ko.observable(false)
+  constructor(params) {
+    this.isOpen = params.isOpen
   }
 }
 
-ko.bindingHandlers.sideNavSetup = {
+ko.bindingHandlers.selectSetup = {
   init: function(element) {
-    $(element).sideNav({ menuWidth: 380 })
+    $(element).material_select();
   }
 };
 

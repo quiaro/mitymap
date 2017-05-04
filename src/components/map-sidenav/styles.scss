@@ -1,0 +1,13 @@
+map-sidenav {
+
+  > .sidenav-toggle .arrow.points-right {
+    border-right: 0 none;
+  }
+
+  > .side-nav {
+    background-color: transparent;
+    z-index: $sidenav-zindex;
+    padding-right: 30px;
+    box-shadow: none;
+  }
+}
