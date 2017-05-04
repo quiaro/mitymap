@@ -16,6 +16,7 @@
     "browser": true,
     "amd": true,
     "es6": true,
-    "jquery": true
+    "jquery": true,
+    "node": true
   }
 }

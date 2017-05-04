@@ -16,7 +16,8 @@
   },
   "browserify-global-shim": {
     "jQuery": "$",
-    "knockout": "ko"
+    "knockout": "ko",
+    "googleApi": "google"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.14.0",

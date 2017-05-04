@@ -1,6 +1,11 @@
-import {helloWorld} from './utils'
+const ko = require('knockout');
+const component = require('../component.js');
+const googleMap = require('./google-map.js');
 
-helloWorld();
+ko.components.register('first-component', component);
+ko.applyBindings({ userName: 'Tom' });
+
+googleMap.init();
 
 $(document).ready(function() {
   // Initialize collapse button
