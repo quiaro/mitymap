@@ -20,15 +20,23 @@ gulp.task('default', [
   'styles',
   'lint',
   'scripts'], function defaultTask() {
-    gulp.watch('src/sass/**/*.scss', ['styles']);
+    gulp.watch('src/**/*.scss').on('change', function() {
+      gulp.start('styles');
+      browserSync.reload();
+    });
 
-    gulp.watch('src/js/**/*.js').on('change', function() {
+    gulp.watch('src/**/*.html').on('change', function() {
+      gulp.start('scripts');
+      browserSync.reload();
+    });
+
+    gulp.watch('src/**/*.js').on('change', function() {
       gulp.start('lint');
       gulp.start('scripts');
       browserSync.reload();
     });
 
-    gulp.watch(['./index.html', 'src/css/**/*.css']).on('change', function() {
+    gulp.watch(['./index.html']).on('change', function() {
       gulp.start('copy-static');
       browserSync.reload();
     });
@@ -42,7 +50,6 @@ gulp.task('copy-static', function() {
   return gulp.src([
       'index.html',
       'src/favicon/*.*',
-      'src/*css/**/*.css',
       '*lib/js/*.js'
   ]).pipe(gulp.dest('dist'));
 });
@@ -52,7 +59,7 @@ gulp.task('lint', function lintTask() {
     // So, it's best to have gulp ignore the directory as well.
     // Also, Be sure to return the stream from the task;
     // Otherwise, the task may end before the stream has finished.
-  return gulp.src(['src/js/**/*.js', '!node_modules/**'])
+  return gulp.src(['src/**/*.js', '!node_modules/**'])
         // eslint() attaches the lint output to the "eslint" property
         // of the file object so it can be used by other modules.
         .pipe(eslint())
@@ -81,15 +88,15 @@ gulp.task('bundle-materialize-js', function bundleMaterializeTask() {
 gulp.task('scripts', function scriptsTask() {
 
   var b = browserify({
-    entries: './src/js/main.js',
+    entries: './src/app.js',
     debug: true
   }).transform('babelify', { presets: ['es2015'] })
     .transform(stringify(['.html']));
 
   return b.bundle()
-    .pipe(source('main.js'))
+    .pipe(source('app.js'))
     .pipe(buffer())
-    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(sourcemaps.init({ loadMaps: true }))
         // Add transformation tasks to the pipeline here.
         .pipe(uglify())
         .on('error', gutil.log)
@@ -98,7 +105,7 @@ gulp.task('scripts', function scriptsTask() {
 });
 
 gulp.task('styles', function stylesTask() {
-  gulp.src('src/sass/**/main.scss')
+  gulp.src('src/sass/app.scss')
       .pipe(sass().on('error', sass.logError))
       .pipe(autoprefixer({
         browsers: ['last 2 versions']

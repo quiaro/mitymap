@@ -1,17 +1,23 @@
 const ko = require('knockout');
+const appViewModel = require('./appViewModel.js')
 const component = require('../component.js');
-const googleMap = require('./google-map.js');
+// const googleMap = require('./google-map.js');
+
+// Initial app state
+const appConfig = {
+  isSidenavOpen: ko.observable(false)
+}
 
 ko.components.register('first-component', component);
-ko.applyBindings({ userName: 'Tom' });
+ko.applyBindings(new appViewModel(appConfig));
 
-googleMap.init();
+// googleMap.init();
 
-$(document).ready(function() {
+// $(document).ready(function() {
   // Initialize collapse button
-  $("#sidenav-expand").sideNav({
-    menuWidth: 380,
-  });
+  // $("#sidenav-expand").sideNav({
+  //   menuWidth: 380,
+  // });
 
-  $('select').material_select();
-});
+  // $('select').material_select();
+// });
