@@ -3,7 +3,7 @@ const template = require('./template.html');
 
 class viewModel {
   constructor(params) {
-    this.isOpen = params.isOpen
+    this.clickHandler = params.clickHandler;
   }
 }
 

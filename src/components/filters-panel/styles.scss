@@ -3,6 +3,7 @@ filters-panel {
   > .sidenav-toggle {
     right: 0;
     left: auto;
+    z-index: $sidenav-zindex + 1;
 
     .arrow.points-left {
       border-left: 0 none;

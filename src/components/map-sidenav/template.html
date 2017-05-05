@@ -1,6 +1,9 @@
-<a href="#" class="sidenav-toggle" data-bind="sideNavSetup: true" data-activates="side-nav">
+<a href="#"
+   class="sidenav-toggle"
+   data-bind="sideNavSetup: isSideNavOpen, click: openSideNav"
+   data-activates="side-nav">
   <div class="arrow points-right"></div>
 </a>
 <div id="side-nav" class="side-nav">
-  <filters-panel params="isOpen: isFiltersOpen"></filters-panel>
+  <filters-panel params="clickHandler: closeSideNav.bind($component)"></filters-panel>
 </div>
