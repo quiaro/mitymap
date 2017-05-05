@@ -2,13 +2,25 @@
   <div class="arrow points-left"></div>
 </a>
 <div class='content'>
-  <div class='input-field'>
-    <select data-bind="selectSetup: true">
-      <option value="" disabled selected>Choose a property type</option>
+
+  <div class='input-field property-type'>
+    <select data-bind="selectSetup: true, value: propTypeSelected">
+      <option value="0" disabled selected>Choose a property type</option>
       <option value="1">Apartment</option>
       <option value="2">House</option>
       <option value="3">Lot</option>
     </select>
     <label>What are you looking for?</label>
   </div>
+
+  <div class='input-field property-location' data-bind="visible: propTypeSelected() !== '0'">
+    <label>Where should the properties be located?</label>
+    <div>
+     <input type="checkbox" id="place-checkbox" data-bind="checked: isLocationAnywhere" />
+     <label for="place-checkbox">Anywhere in the country</label>
+    </div>
+    <button class="waves-effect waves-light btn"
+            data-bind="enable: !isLocationAnywhere()">Select area on the map</button>
+  </div>
+
 </div>

@@ -4,6 +4,9 @@ const template = require('./template.html');
 class viewModel {
   constructor(params) {
     this.clickHandler = params.clickHandler;
+    // Properties specific to this component's context
+    this.propTypeSelected = ko.observable('0');
+    this.isLocationAnywhere = ko.observable(false);
   }
 }
 

@@ -16,5 +16,27 @@ filters-panel {
     background-color: $sidenav-bgcolor;
     padding: 20px;
     box-shadow: 0 1px 5px 0 rgba(0,0,0,.12);
+
+    > .property-type {
+      margin-bottom: 25px;
+    }
+
+    > .property-location {
+      margin-top: 0;
+
+      > label {
+        position: relative;
+        font-size: .8rem;
+        top: 0;
+      }
+
+      input[type='checkbox'] + label {
+        top: 0.5rem;
+      }
+
+      > button {
+        margin-top: 20px;
+      }
+    }
   }
 }
