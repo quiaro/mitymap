@@ -2,8 +2,10 @@ const ko = require('knockout');
 const template = require('./template.html');
 
 class viewModel {
-  constructor() {
-    this.isSideNavOpen = ko.observable(false)
+  constructor(params) {
+    this.properties = params.properties;
+    this.visibleProperties = params.visibleProperties;
+    this.isSideNavOpen = ko.observable(false);
   }
   openSideNav() {
     // Sync observable with DOM
