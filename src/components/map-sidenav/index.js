@@ -1,20 +1,10 @@
 const ko = require('knockout');
+const viewModel = require('./viewModel.js');
 const template = require('./template.html');
+const filtersPanel = require('../filters-panel');
 
-class viewModel {
-  constructor(params) {
-    this.properties = params.properties;
-    this.visibleProperties = params.visibleProperties;
-    this.isSideNavOpen = ko.observable(false);
-  }
-  openSideNav() {
-    // Sync observable with DOM
-    this.isSideNavOpen(true)
-  }
-  closeSideNav() {
-    this.isSideNavOpen(false)
-  }
-}
+// Register sub-component
+ko.components.register('filters-panel', filtersPanel);
 
 ko.bindingHandlers.sideNavSetup = {
   init: function(element) {

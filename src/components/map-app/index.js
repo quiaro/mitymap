@@ -3,7 +3,12 @@ const google = require('googleApi');
 const mapStyles = require('./map-styles.json');
 const viewModel = require('./viewModel.js');
 const template = require('./template.html');
+const mapSideNav = require('../map-sidenav');
+
 let map;
+
+// Register sub-component
+ko.components.register('map-sidenav', mapSideNav);
 
 // Initialize the map on a specific DOM element in the component via a binding
 // Per: http://knockoutjs.com/documentation/custom-bindings.html
