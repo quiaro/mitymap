@@ -11,14 +11,14 @@ class viewModel {
   }
 
   /**
-   * Update the visibleProperties observable with the filter parameters passed.
-   * Components will observe changes on visibleProperties, but will not change it
-   * themselves. Instead, updates to visibleProperties will be delegated to this
-   * method so that it's easier to follow changes made to visibleProperties.
+   * Update the visibleProperties observable with a new set of visible
+   * properties. Components will observe changes on visibleProperties, but
+   * will not change it themselves. Instead, updates to visibleProperties will
+   * be delegated to this method so it's easier to debug and follow changes.
    * @param {object} filtersObj - filter criteria
    */
-  filterProperties(filtersObj) {
-    this.visibleProperties(this.properties.filterBy(filtersObj))
+  updateProperties(visibleProperties) {
+    this.visibleProperties(visibleProperties)
   }
 }
 
