@@ -1,3 +1,3 @@
-<map-sidenav params="properties: properties,
-                     visibleProperties: visibleProperties"></map-sidenav>
+<map-sidenav params="visibleProperties: visibleProperties,
+                     filterPropertiesHandler: filterProperties.bind($component)"></map-sidenav>
 <div data-bind="mapSetup: visibleProperties" style="height:100vh;"></div>

@@ -1,17 +1,9 @@
 const ko = require('knockout');
+const viewModel = require('./viewModel.js');
 const template = require('./template.html');
 
-class viewModel {
-  constructor(params) {
-    this.clickHandler = params.clickHandler;
-    // Properties specific to this component's context
-    this.propTypeSelected = ko.observable('0');
-    this.isLocationAnywhere = ko.observable(false);
-  }
-}
-
 ko.bindingHandlers.selectSetup = {
-  init: function(element) {
+  init: (element) =>  {
     $(element).material_select();
   }
 };

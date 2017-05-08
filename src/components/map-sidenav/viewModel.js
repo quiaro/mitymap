@@ -2,8 +2,8 @@ const ko = require('knockout');
 
 class viewModel {
   constructor(params) {
-    this.properties = params.properties;
     this.visibleProperties = params.visibleProperties;
+    this.filterPropertiesHandler = params.filterPropertiesHandler;
     this.isSideNavOpen = ko.observable(false);
   }
   openSideNav() {

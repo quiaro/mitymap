@@ -5,5 +5,7 @@
   <div class="arrow points-right"></div>
 </a>
 <div id="side-nav" class="side-nav">
-  <filters-panel params="clickHandler: closeSideNav.bind($component)"></filters-panel>
+  <filters-panel params="clickHandler: closeSideNav.bind($component),
+                         filterPropertiesHandler: filterPropertiesHandler,
+                         visibleProperties: visibleProperties"></filters-panel>
 </div>

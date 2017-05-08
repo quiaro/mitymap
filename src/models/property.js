@@ -56,7 +56,16 @@ class Property {
    * @return {string[]}
    */
   static types() {
-    return ['house', 'apartment', 'lot'];
+    return [{
+      value: 'apartment',
+      label: 'Apartment'
+    }, {
+      value: 'house',
+      label: 'House'
+    }, {
+      value: 'lot',
+      label: 'Lot'
+    }];
   }
 }
 

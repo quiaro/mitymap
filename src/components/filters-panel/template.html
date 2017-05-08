@@ -4,11 +4,8 @@
 <div class='content'>
 
   <div class='input-field property-type'>
-    <select data-bind="selectSetup: true, value: propTypeSelected">
-      <option value="0" disabled selected>Choose a property type</option>
-      <option value="1">Apartment</option>
-      <option value="2">House</option>
-      <option value="3">Lot</option>
+    <select data-bind="value: propTypeSelected, foreach: propertyTypes, selectSetup">
+      <option data-bind="attr: { disabled: !enable, value: value }, text: label"></option>
     </select>
     <label>What are you looking for?</label>
   </div>
