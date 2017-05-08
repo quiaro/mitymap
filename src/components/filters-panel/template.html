@@ -20,8 +20,17 @@
             data-bind="enable: !isLocationAnywhere()">Select area on the map</button>
   </div>
 
-  <div class="property-total">
-    <span>Total properties listed: <b data-bind="text: visibleProperties().length"></b></span>
+  <div class="filters">
+    <div class="property-total">
+      <span>Total properties listed: <b data-bind="text: visibleProperties().length"></b></span>
+    </div>
+
+    <div class='range price'>
+      <span>Filter by price per square meter</span>
+      <div data-bind="rangeSetup" />
+    </div>
   </div>
+
+
 
 </div>

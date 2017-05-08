@@ -72,14 +72,17 @@ gulp.task('lint', function lintTask() {
 });
 
 gulp.task('bundle-materialize-css', function bundleMaterializeTask() {
-  gulp.src('lib/materialize-0.98.2/sass/materialize.scss')
+  gulp.src(['lib/materialize-0.98.2/sass/materialize.scss',
+            'lib/materialize-0.98.2/extras/nouislider.css'])
       .pipe(sass().on('error', sass.logError))
+      .pipe(concat('materialize.css'))
       .pipe(cleanCSS())
       .pipe(gulp.dest('dist/lib/materialize'))
 })
 
 gulp.task('bundle-materialize-js', function bundleMaterializeTask() {
-  gulp.src('lib/materialize-0.98.2/js/*.js')
+  gulp.src(['lib/materialize-0.98.2/js/*.js',
+            'lib/materialize-0.98.2/extras/nouislider.js'])
       .pipe(concat('materialize.js'))
       // .pipe(uglify())
       .pipe(gulp.dest('dist/lib/materialize'))
