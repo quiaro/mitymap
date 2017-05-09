@@ -97,7 +97,7 @@
   border: 1px solid transparent;
 }
 .noUi-connect {
-  background: #26A69A;
+  background: #00a057;
   -webkit-transition: background 450ms;
   transition: background 450ms;
 }
@@ -301,7 +301,7 @@
   height: 15px;
   border-radius: 50%;
   box-shadow: none;
-  background-color: #26A69A;
+  background-color: #00a057;
   border: none;
   left: -5px;
   top: -6px;
@@ -330,7 +330,7 @@
   width: 30px;
   top: -17px;
   left: -2px;
-  background-color: #26A69A;
+  background-color: #00a057;
   border-radius: 50%;
   transition: border-radius .25s cubic-bezier(0.215, 0.610, 0.355, 1.000),
   transform .25s cubic-bezier(0.215, 0.610, 0.355, 1.000);
@@ -338,6 +338,7 @@
   transform-origin: 50% 100%;
 }
 .noUi-target.noUi-horizontal .noUi-active .noUi-tooltip {
+  overflow: hidden;
   border-radius: 15px 15px 15px 0;
   transform: rotate(-45deg) translate(23px, -25px);
 }
@@ -369,7 +370,7 @@
   width: 30px;
   top: -17px;
   left: -2px;
-  background-color: #26A69A;
+  background-color: #00a057;
   border-radius: 50%;
   transition: border-radius .25s cubic-bezier(0.215, 0.610, 0.355, 1.000),
   transform .25s cubic-bezier(0.215, 0.610, 0.355, 1.000);
@@ -377,6 +378,7 @@
   transform-origin: 50% 100%;
 }
 .noUi-target.noUi-vertical .noUi-active .noUi-tooltip {
+  overflow: hidden;
   border-radius: 15px 15px 15px 0;
   transform: rotate(-135deg) translate(35px, -10px);
 }
