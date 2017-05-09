@@ -10,7 +10,7 @@ ko.components.register('properties-panel', propertiesPanel);
 
 ko.bindingHandlers.sideNavSetup = {
   init: function(element) {
-    $(element).sideNav({ menuWidth: 380 })
+    $(element).sideNav({ menuWidth: 400 })
   },
   update: function(element, valueAccessor) {
     const observable = valueAccessor();

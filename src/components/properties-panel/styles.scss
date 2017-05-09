@@ -21,6 +21,31 @@ properties-panel {
       background-color: $sidenav-bgcolor;
       padding: 20px;
       box-shadow: 0 1px 5px 0 rgba(0,0,0,.12);
+      overflow: scroll;
+
+      .properties table {
+        font-size: .8rem;
+        margin-top: 12px;
+
+        thead {
+          border-bottom: 0 none;
+
+          th {
+            padding: 10px;
+            color: $green-primary;
+          }
+        }
+
+        tbody {
+          tr:nth-child(odd) { background-color: #fdfdfd; }
+          tr:nth-child(even) { background-color: rgba(51, 193, 128, 0.12); }
+          td {
+            padding: 10px;
+            border-radius: 0;
+            color: #585858;
+          }
+        }
+      }
     }
   }
 }
