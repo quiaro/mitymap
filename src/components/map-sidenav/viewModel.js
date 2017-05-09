@@ -8,6 +8,7 @@ class viewModel {
 
     // Properties specific to this component's context
     this.isSideNavOpen = ko.observable(false);
+    this.isShowingFilters = ko.observable(true);
   }
   openSideNav() {
     // Sync observable with DOM
@@ -15,6 +16,12 @@ class viewModel {
   }
   closeSideNav() {
     this.isSideNavOpen(false)
+  }
+  switchToProperties() {
+    this.isShowingFilters(false)
+  }
+  switchToFilters() {
+    this.isShowingFilters(true)
   }
 }
 

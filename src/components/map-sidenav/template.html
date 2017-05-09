@@ -4,9 +4,15 @@
    data-activates="side-nav">
   <div class="arrow points-right"></div>
 </a>
-<div id="side-nav" class="side-nav">
+<div id="side-nav" class="side-nav" data-bind="switchPanel: isShowingFilters">
+
   <filters-panel params="clickHandler: closeSideNav.bind($component),
                          updatePropertiesHandler: updatePropertiesHandler,
+                         doneHandler: switchToProperties.bind($component),
                          properties: properties,
                          visibleProperties: visibleProperties"></filters-panel>
+
+ <properties-panel params="clickHandler: closeSideNav.bind($component),
+                           doneHandler: switchToFilters.bind($component),
+                           visibleProperties: visibleProperties"></properties-panel>
 </div>

@@ -10,6 +10,7 @@ class viewModel {
     // Handlers to modify state
     this.clickHandler = params.clickHandler;
     this.updatePropertiesHandler = params.updatePropertiesHandler;
+    this.doneHandler = params.doneHandler;
 
     // Properties specific to this component's context
     this.propTypeSelected = ko.observable('0');

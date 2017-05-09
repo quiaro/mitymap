@@ -1,46 +1,48 @@
-<a href="#" class="sidenav-toggle" data-bind="click: clickHandler">
-  <div class="arrow points-left"></div>
-</a>
-<div class='content'>
+<div class='container'>
+  <a href="#" class="sidenav-toggle" data-bind="click: clickHandler">
+    <div class="arrow points-left"></div>
+  </a>
+  <div class='content'>
 
-  <div class='input-field property-type'>
-    <select data-bind="value: propTypeSelected, foreach: propertyTypes, selectSetup">
-      <option data-bind="attr: { disabled: !enable, value: value }, text: label"></option>
-    </select>
-    <label>What are you looking for?</label>
-  </div>
-
-  <div class='input-field property-location' data-bind="visible: propTypeSelected() !== '0'">
-    <label>Where should the properties be located?</label>
-    <div>
-     <input type="checkbox" id="place-checkbox" data-bind="checked: isLocationAnywhere" />
-     <label for="place-checkbox">Anywhere in the country</label>
+    <div class='input-field property-type'>
+      <select data-bind="value: propTypeSelected, foreach: propertyTypes, selectSetup">
+        <option data-bind="attr: { disabled: !enable, value: value }, text: label"></option>
+      </select>
+      <label>What are you looking for?</label>
     </div>
-    <button class="waves-effect waves-light btn"
-            data-bind="enable: !isLocationAnywhere()">Select area on the map</button>
+
+    <div class='input-field property-location' data-bind="visible: propTypeSelected() !== '0'">
+      <label>Where should the properties be located?</label>
+      <div>
+       <input type="checkbox" id="place-checkbox" data-bind="checked: isLocationAnywhere" />
+       <label for="place-checkbox">Anywhere in the country</label>
+      </div>
+      <button class="waves-effect waves-light btn"
+              data-bind="enable: !isLocationAnywhere()">Select area on the map</button>
+    </div>
+    <div class="filters" data-bind="visible: propTypeSelected() !== '0'">
+      <div class='divider'></div>
+      <strong>Filters</strong>
+      <range-filter params="filter: 'squareMeterSalePrice',
+                            bounds: priceBounds,
+                            minValue: minPrice,
+                            maxValue: maxPrice,
+                            label: 'Price per square meter',
+                            unit: '$/m'"></range-filter>
+
+      <range-filter params="filter: 'area',
+                            bounds: areaBounds,
+                            minValue: minArea,
+                            maxValue: maxArea,
+                            label: 'Area in square meters',
+                            unit: 'm'"></range-filter>
+
+      <button class="waves-effect waves-light btn view-properties"
+              data-bind="enable: visibleProperties().length,
+                         click: doneHandler">
+        See <span data-bind="text: visibleProperties().length"></span> properties
+      </button>
+    </div>
+
   </div>
-  <div class="filters" data-bind="visible: propTypeSelected() !== '0'">
-    <div class='divider'></div>
-    <strong>Filters</strong>
-    <range-filter params="filter: 'squareMeterSalePrice',
-                          bounds: priceBounds,
-                          minValue: minPrice,
-                          maxValue: maxPrice,
-                          label: 'Price per square meter',
-                          unit: '$/m'
-                          "></range-filter>
-
-    <range-filter params="filter: 'area',
-                          bounds: areaBounds,
-                          minValue: minArea,
-                          maxValue: maxArea,
-                          label: 'Area in square meters',
-                          unit: 'm'"></range-filter>
-
-    <button class="waves-effect waves-light btn view-properties"
-            data-bind="enable: visibleProperties().length">
-      See <span data-bind="text: visibleProperties().length"></span> properties
-    </button>
-  </div>
-
 </div>

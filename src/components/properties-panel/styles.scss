@@ -1,0 +1,26 @@
+properties-panel {
+  > .container {
+    width: $sidenav-panel-width;
+    position: absolute;
+
+    > .sidenav-toggle {
+      right: 0;
+      left: auto;
+      z-index: $sidenav-zindex + 1;
+      padding: 0;
+
+      .arrow.points-left {
+        border-left: 0 none;
+        left: 10px;
+      }
+    }
+
+    > .content {
+      height: 100vh;
+      width: $sidenav-panel-width - $sidenav-toggle-width;
+      background-color: $sidenav-bgcolor;
+      padding: 20px;
+      box-shadow: 0 1px 5px 0 rgba(0,0,0,.12);
+    }
+  }
+}

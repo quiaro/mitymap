@@ -1,0 +1,14 @@
+<div class='container hidden'>
+  <a href="#" class="sidenav-toggle" data-bind="click: clickHandler">
+    <div class="arrow points-left"></div>
+  </a>
+  <div class='content'>
+    <span>Properties Panel</span>
+
+      <button class="waves-effect waves-light btn view-properties"
+              data-bind="enable: visibleProperties().length,
+                         click: doneHandler">
+        Back to filters
+      </button>
+  </div>
+</div>

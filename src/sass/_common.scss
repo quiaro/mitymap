@@ -135,7 +135,7 @@ button {
 .sidenav-toggle {
   display: block;
   height: 50px;
-  width: 30px;
+  width: $sidenav-toggle-width;
   z-index: $sidenav-zindex - 1;
   position: absolute;
   top: 20px;
