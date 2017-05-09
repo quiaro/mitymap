@@ -6,6 +6,7 @@ class viewModel {
     this.minValue = params.minValue;
     this.maxValue = params.maxValue;
     this.title = params.label;
+    this.unit = params.unit;
   }
 }
 

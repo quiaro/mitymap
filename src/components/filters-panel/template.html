@@ -26,13 +26,16 @@
                           bounds: priceBounds,
                           minValue: minPrice,
                           maxValue: maxPrice,
-                          label: 'Price per square meter'"></range-filter>
+                          label: 'Price per square meter',
+                          unit: '$/m'
+                          "></range-filter>
 
     <range-filter params="filter: 'area',
                           bounds: areaBounds,
                           minValue: minArea,
                           maxValue: maxArea,
-                          label: 'Area in square meters'"></range-filter>
+                          label: 'Area in square meters',
+                          unit: 'm'"></range-filter>
 
     <button class="waves-effect waves-light btn view-properties"
             data-bind="enable: visibleProperties().length">
