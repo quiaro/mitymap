@@ -65,7 +65,7 @@ class PropertyList {
    */
   getRange(type, attribute) {
     const rangeValues = this.properties
-      .filter(property => (property['type'] === type))
+      .filter(property => (property['type'] === type && property[attribute]))
       .map(property => property[attribute]);
 
     return [ Math.min(...rangeValues),
