@@ -1,5 +1,5 @@
 const ko = require('knockout');
-const Property = require('../../models/property.js')
+const Property = require('../../models/property.js');
 
 class viewModel {
   constructor(params) {
@@ -14,6 +14,14 @@ class viewModel {
     // Properties specific to this component's context
     this.propTypeSelected = ko.observable('0');
     this.isLocationAnywhere = ko.observable(false);
+    this.priceBounds = ko.observableArray();
+    this.minPrice = ko.observable();
+    this.maxPrice = ko.observable();
+
+    // Observable that concentrates all property filters. It will delay its
+    // change notifications in order to avoid updating the visible properties
+    // list continuously.
+    this.propFilters = ko.observable({}).extend({ rateLimit: 150 });
 
     this.propertyTypes = [{
         value: 0,
@@ -28,13 +36,37 @@ class viewModel {
       }));
 
     /* --- Explicit subscriptions on observables ---*/
-    // When the property type is changed the range filters will be reset
-    this.propTypeSelected.subscribe((type) => {
-      if (type !== '0') {
-        const propertyList = this.properties.filterBy({ 'type': type });
-        this.updatePropertiesHandler(propertyList)
-      }
+    this.propTypeSelected.subscribe(type => {
+      // Whenever the property type changes, the bounds for the range filters
+      // must be updated. Changing the bounds will update the range's min and
+      // max values, which will in turn update the propFilters observable.
+      const priceBounds = this.properties.getRange(type, 'squareMeterSalePrice');
+      this.priceBounds(priceBounds);
+    });
+
+    // Whenever any of these filters are updated, the propFilters observable will
+    // be updated via the updatePropFilters method
+    this.minPrice.subscribe(this.updatePropFilters.bind(this));
+    this.maxPrice.subscribe(this.updatePropFilters.bind(this));
+
+    // After the property filters are updated, a new set of visible properties
+    // is computed and passed to the handler in charge of updating the
+    // visibleProperties value.
+    this.propFilters.subscribe(filters => {
+      const propertyList = this.properties.filterBy(filters);
+      this.updatePropertiesHandler(propertyList)
     })
+  }
+
+  updatePropFilters() {
+    const type = this.propTypeSelected();
+    const minPrice = this.minPrice();
+    const maxPrice = this.maxPrice();
+
+    this.propFilters({
+      'type': type,
+      'squareMeterSalePrice': [ minPrice, maxPrice ]
+    });
   }
 }
 
