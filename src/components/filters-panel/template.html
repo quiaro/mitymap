@@ -28,6 +28,12 @@
                           maxValue: maxPrice,
                           label: 'Price per square meter'"></range-filter>
 
+    <range-filter params="filter: 'area',
+                          bounds: areaBounds,
+                          minValue: minArea,
+                          maxValue: maxArea,
+                          label: 'Area in square meters'"></range-filter>
+
     <button class="waves-effect waves-light btn view-properties"
             data-bind="enable: visibleProperties().length">
       See <span data-bind="text: visibleProperties().length"></span> properties
