@@ -1,2 +1,6 @@
-<span data-bind="text: title"></span>
+<em data-bind="text: title"></em>
 <div data-bind="attr: { 'data-range': filter }, rangeSetup: bounds"></div>
+<div class="bounds">
+  <span><em data-bind="text: bounds()[0]"></em> $/m<sup>2</sup></span>
+  <span><em data-bind="text: bounds()[1]"></em> $/m<sup>2</sup></span>
+</div>

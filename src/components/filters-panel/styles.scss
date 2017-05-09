@@ -18,11 +18,12 @@ filters-panel {
     box-shadow: 0 1px 5px 0 rgba(0,0,0,.12);
 
     > .property-type {
-      margin-bottom: 25px;
+      margin-bottom: 15px;
     }
 
     > .property-location {
       margin-top: 0;
+      margin-bottom: 30px;
 
       > label {
         position: relative;
@@ -37,6 +38,19 @@ filters-panel {
       > button {
         margin-top: 20px;
       }
+    }
+
+    > .filters {
+      > strong {
+        display: block;
+        margin-top: 20px;
+        text-transform: uppercase;
+      }
+    }
+
+    button.view-properties {
+      display: block;
+      margin: 20px auto 0;
     }
   }
 }

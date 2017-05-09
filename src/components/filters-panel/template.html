@@ -19,15 +19,16 @@
     <button class="waves-effect waves-light btn"
             data-bind="enable: !isLocationAnywhere()">Select area on the map</button>
   </div>
-
   <div class="filters" data-bind="visible: propTypeSelected() !== '0'">
+    <div class='divider'></div>
+    <strong>Filters</strong>
     <range-filter params="filter: 'squareMeterSalePrice',
                           bounds: priceBounds,
                           minValue: minPrice,
                           maxValue: maxPrice,
-                          label: 'price per square meter'"></range-filter>
+                          label: 'Price per square meter'"></range-filter>
 
-    <button class="waves-effect waves-light btn"
+    <button class="waves-effect waves-light btn view-properties"
             data-bind="enable: visibleProperties().length">
       See <span data-bind="text: visibleProperties().length"></span> properties
     </button>

@@ -1,3 +1,32 @@
 range-filter {
+  display: block;
+  margin-top: 10px;
 
+  > em {
+    display: block;
+    font-size: .8rem;
+    color: #9e9e9e;
+    margin-bottom: 12px;
+    font-style: normal;
+  }
+  > .noUi-horizontal {
+    margin: 0 15px;
+  }
+  > .bounds {
+    display: flex;
+    margin-top: 10px;
+
+    > span {
+      font-size: .8rem;
+      color: #9e9e9e;
+      display: inline-block;
+      flex: 1;
+
+      em { font-style: normal; }
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
 }
