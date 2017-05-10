@@ -61,9 +61,7 @@ class viewModel {
           // animation, remove the animation. If the marker should appear
           // selected, the selectProperty method will be in charge of setting
           // the animation.
-          if (marker.getAnimation() === google.maps.Animation.BOUNCE) {
-            marker.setAnimation(null)
-          }
+          marker.setAnimation(null)
         }
         bounds.extend(marker.getPosition());
       } else {
@@ -113,9 +111,11 @@ class viewModel {
       markers.forEach(marker => {
         // Cancel the animations on all markers except for the selected marker
         if (marker.getAnimation() !== google.maps.Animation.BOUNCE) {
-          marker.setAnimation(null)
+          marker.setOptions({
+            animation: null,
+            map: this.map
+          });
         }
-        marker.setMap(this.map);
       });
     }
   }
@@ -125,8 +125,10 @@ class viewModel {
    */
   selectProperty(property) {
     const selectedMarker = this.markers.get(property.id);
-    selectedMarker.setAnimation(google.maps.Animation.BOUNCE);
-    selectedMarker.setMap(this.map);
+    selectedMarker.setOptions({
+      animation: google.maps.Animation.BOUNCE,
+      map: this.map
+    });
 
     // If the markers have not yet been placed on the map (the timer to call
     // addMarkers has not run out), then cancel the drop animations.
