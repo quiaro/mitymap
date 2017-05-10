@@ -1,6 +1,6 @@
 <map-sidenav params="properties: properties,
                      visibleProperties: visibleProperties,
                      updatePropertiesHandler: updateProperties.bind($component),
-                     onClose: refreshMarkersOnMap.bind($component),
+                     onClose: refreshMapAndAttachMarkers.bind($component),
                      onSelectProperty: selectProperty.bind($component)"></map-sidenav>
 <div class="google-map" data-bind="mapSetup"></div>

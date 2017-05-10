@@ -44,8 +44,8 @@ class viewModel {
   }
 
   selectProperty(property) {
-    this.onSelectProperty(property);
     this.onClose();
+    this.onSelectProperty(property);
   }
 }
 
