@@ -5,9 +5,10 @@ class viewModel {
     // Observables (read-only)
     this.visibleProperties = params.visibleProperties;
 
-    // Handlers to modify state
-    this.clickHandler = params.clickHandler;
+    // Handlers
+    this.onClose = params.onClose;
     this.doneHandler = params.doneHandler;
+    this.onSelectProperty = params.onSelectProperty;
 
     // Properties specific to this component's context
     this.sortAttribute = ko.observable('project');
@@ -40,6 +41,11 @@ class viewModel {
       this.sortAttribute(attribute)
           .sortAscending(true);
     }
+  }
+
+  selectProperty(property) {
+    this.onSelectProperty(property);
+    this.onClose();
   }
 }
 

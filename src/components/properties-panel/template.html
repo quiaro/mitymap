@@ -1,5 +1,5 @@
 <div class='container hidden'>
-  <a href="#" class="sidenav-toggle" data-bind="click: clickHandler">
+  <a href="#" class="sidenav-toggle" data-bind="click: onClose">
     <div class="arrow points-left"></div>
   </a>
   <div class='content'>
@@ -15,7 +15,7 @@
           </tr>
         </thead>
         <tbody data-bind="foreach: sortedProperties">
-          <tr>
+          <tr data-bind="click: $parent.selectProperty.bind($parent)">
             <td data-bind="text: project"></td>
             <td data-bind="text: area"></td>
             <td data-bind="text: squareMeterSalePrice"></td>

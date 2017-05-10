@@ -12,7 +12,8 @@
                          properties: properties,
                          visibleProperties: visibleProperties"></filters-panel>
 
- <properties-panel params="clickHandler: closeSideNav.bind($component),
-                           doneHandler: switchToFilters.bind($component),
-                           visibleProperties: visibleProperties"></properties-panel>
+  <properties-panel params="onClose: closeSideNav.bind($component),
+                            doneHandler: switchToFilters.bind($component),
+                            visibleProperties: visibleProperties,
+                            onSelectProperty: onSelectProperty"></properties-panel>
 </div>

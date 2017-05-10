@@ -70,6 +70,10 @@ class viewModel {
     // Extend the boundaries of the map to be able to view all markers
     map.fitBounds(bounds);
   }
+
+  selectProperty(property) {
+    console.info('Property selected: ', property);
+  }
 }
 
 module.exports = viewModel;
