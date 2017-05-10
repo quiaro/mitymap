@@ -8,6 +8,7 @@ class Property {
    * @param {object} - JSON object with property data
    */
   constructor(property) {
+    this.id = property.id;
     this.project = property.project;
     this.type = property.type;
     this.address = property.glg_address;

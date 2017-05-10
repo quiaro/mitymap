@@ -6,6 +6,9 @@ class viewModel {
     this.visibleProperties = params.visibleProperties;
     this.updatePropertiesHandler = params.updatePropertiesHandler;
 
+    // Event handlers
+    this.onClose = params.onClose;
+
     // Properties specific to this component's context
     this.isSideNavOpen = ko.observable(false);
     this.isShowingFilters = ko.observable(true);
@@ -16,6 +19,7 @@ class viewModel {
   }
   closeSideNav() {
     this.isSideNavOpen(false)
+    this.onClose();
   }
   switchToProperties() {
     this.isShowingFilters(false)

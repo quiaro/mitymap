@@ -5,18 +5,17 @@ const viewModel = require('./viewModel.js');
 const template = require('./template.html');
 const mapSideNav = require('../map-sidenav');
 
-let map;
-
 // Register sub-component
 ko.components.register('map-sidenav', mapSideNav);
 
 // Initialize the map on a specific DOM element in the component via a binding
 // Per: http://knockoutjs.com/documentation/custom-bindings.html
 ko.bindingHandlers.mapSetup = {
-  init: function(element) {
+  init: (element, valueAccessor, allBindings, viewModel, bindingContext) => {
 
-    // Constructor creates a new map - only center and zoom are required.
-    map = new google.maps.Map(element, {
+    // Constructor creates a new map - only center and zoom are required
+    // Map reference is saved in the viewModel
+    bindingContext.$data.map = new google.maps.Map(element, {
       center: {
         lat: 9.9310584,
         lng: -84.0753899
@@ -27,17 +26,6 @@ ko.bindingHandlers.mapSetup = {
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       styles: mapStyles
     });
-  },
-  update: (element, valueAccessor) => {
-    const observable = valueAccessor();
-    const properties = ko.unwrap(observable);
-    properties.forEach((property) => {
-      new google.maps.Marker({
-        position: property.coordinates,
-        map: map,
-        title: 'First Marker!'
-      });
-    })
   }
 };
 
