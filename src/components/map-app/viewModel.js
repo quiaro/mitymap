@@ -47,7 +47,10 @@ class viewModel {
       if (visibleProperties.has(id)) {
         // Remove id from visible properties map since a marker already exists for it
         visibleProperties.delete(id);
-        marker.setMap(map);
+        if (!marker.getMap()) {
+          // Attach the marker to the map if it isn't already attached
+          marker.setMap(map);
+        }
         bounds.extend(marker.getPosition());
       } else {
         marker.setMap(null);
