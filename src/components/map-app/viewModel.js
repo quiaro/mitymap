@@ -13,6 +13,7 @@ class viewModel {
     // Reference to Google map is initialized via a custom binding
     this.map = null;
     this.markers = new Map();  // Markers map where the key is the property ID
+    this.prevSelectedMarker = null;
     this.dropMarkers = false;
   }
 
@@ -56,12 +57,6 @@ class viewModel {
           // markers array
           marker.setAnimation(google.maps.Animation.DROP)
           pendingMarkers.push(marker);
-        } else {
-          // If the marker is already attached to the map and has a bounce
-          // animation, remove the animation. If the marker should appear
-          // selected, the selectProperty method will be in charge of setting
-          // the animation.
-          marker.setAnimation(null)
         }
         bounds.extend(marker.getPosition());
       } else {
@@ -72,12 +67,17 @@ class viewModel {
     // Remaining properties in the map don't have a marker yet, create them
     // but don't attach them to the map yet
     propertiesMap.forEach((prop, id) => {
+      const self = this;
       const newMarker = new google.maps.Marker({
         position: prop.coordinates,
         title: prop.project,
         icon: 'http://maps.google.com/mapfiles/kml/pal5/icon12.png',
         animation: google.maps.Animation.DROP,
         id: id
+      });
+      newMarker.addListener('click', function() {
+        const property = self.properties.getProperty(this.get('id'));
+        self.selectProperty(property);
       });
       bounds.extend(newMarker.getPosition());
       this.markers.set(id, newMarker);
@@ -121,14 +121,28 @@ class viewModel {
   }
 
   /**
-   * Mark a property marker as selected on the map
+   * Mark a property marker as selected on the map.
+   * @param {object} property
    */
   selectProperty(property) {
+    // Newly selected marker
     const selectedMarker = this.markers.get(property.id);
-    selectedMarker.setOptions({
-      animation: google.maps.Animation.BOUNCE,
-      map: this.map
-    });
+    if (this.prevSelectedMarker !== selectedMarker) {
+
+      // Remove animation from previously selected marker
+      if (this.prevSelectedMarker) {
+        this.prevSelectedMarker.setAnimation(null);
+      }
+
+      selectedMarker.setOptions({
+        animation: google.maps.Animation.BOUNCE,
+        map: this.map
+      });
+
+      // Update reference to selected marker
+      console.info('Prev selected marker updated!')
+      this.prevSelectedMarker = selectedMarker;
+    }
 
     // If the markers have not yet been placed on the map (the timer to call
     // addMarkers has not run out), then cancel the drop animations.

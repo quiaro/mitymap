@@ -71,6 +71,17 @@ class PropertyList {
     return [ Math.min(...rangeValues),
              Math.max(...rangeValues) ];
   }
+
+  /**
+   * Find a property by its ID
+   * @param {integer} propertyId
+   * @return {Property} - Property instance
+   */
+  getProperty(propertyId) {
+    return this.properties.find(property => {
+      return property['id'] === propertyId;
+    });
+  }
 }
 
 module.exports = PropertyList;
