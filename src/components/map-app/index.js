@@ -4,9 +4,11 @@ const mapStyles = require('./map-styles.json');
 const viewModel = require('./viewModel.js');
 const template = require('./template.html');
 const mapSideNav = require('../map-sidenav');
+const propertyModal = require('../property-modal');
 
-// Register sub-component
+// Register sub-components
 ko.components.register('map-sidenav', mapSideNav);
+ko.components.register('property-modal', propertyModal);
 
 // Initialize the map on a specific DOM element in the component via a binding
 // Per: http://knockoutjs.com/documentation/custom-bindings.html

@@ -8,6 +8,7 @@ class viewModel {
 
     // Event handlers
     this.onSelectProperty = params.onSelectProperty;
+    this.openHandler = params.onOpen;
     this.closeHandler = params.onClose;
 
     // Properties specific to this component's context
@@ -16,6 +17,7 @@ class viewModel {
   }
   openSideNav() {
     // Sync observable with DOM
+    this.openHandler();
     this.isSideNavOpen(true)
   }
   closeSideNav() {
