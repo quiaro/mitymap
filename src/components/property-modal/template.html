@@ -1,10 +1,64 @@
 <div class="modal" data-bind="propertyModalSetup: isModalOpen">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>Property content</p>
-  </div>
-  <div class="modal-footer">
-    <button class="modal-action waves-effect waves-light btn"
-            data-bind="click: onActionBtnClick">View in Map</button>
+  <div class="modal-content" data-bind="with: property">
+    <article>
+      <h3 data-bind="text: title"></h3>
+
+      <div data-bind="ifnot: $parent.isLoading" class="content">
+        <section>
+          <figure data-bind: "if: extended">
+            <img data-bind="attr: { src: cover_image, title: title }" />
+            <figcaption data-bind="text: address"></figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <div class="details">
+            <span class="address" data-bind: "ifnot: extended, text: address"></span>
+            <div>
+              <em data-bind="text: bedrooms"></em><span>Bedrooms</span>
+            </div>
+            <div>
+              <em data-bind="text: bathrooms"></em><span>Bathrooms</span>
+            </div>
+            <div>
+              <em data-bind="text: area"></em><span>m<sup>2</sup></span>
+            </div>
+          </div>
+
+          <div data-bind="if: extended" class="api">
+            <div>
+              <span>Rating</span><em data-bind="text: overall_rating"></em>
+              <p data-bind="if: rating_count">
+                *From <span data-bind="text: rating_count"></span> review(s)
+              </p>
+            </div>
+            <div>
+              <span>For more information call</span><em data-bind="text: phone"></em>
+            </div>
+            <p>Information provided by <span data-bind="text: source"></span></p>
+          </div>
+
+          <div class="price">For sale: <span data-bind="text: salePrice"></span></div>
+        </section>
+
+        <div class="actions">
+          <button class="modal-action waves-effect waves-light btn"
+                  data-bind="click: $parent.onActionBtnClick.bind($parent)">View in Map</button>
+        </div>
+      </div>
+
+      <div data-bind="if: $parent.isLoading" class="preloader-wrapper active">
+        <div class="spinner-layer spinner-green-only">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
   </div>
 </div>
