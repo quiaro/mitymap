@@ -1,5 +1,5 @@
 const ko = require('knockout');
-const Property = require('../../models/property.js');
+const Property = require('../../js/models/property.js');
 
 class viewModel {
   constructor(params) {

@@ -1,7 +1,7 @@
 const ko = require('knockout');
 const google = require('googleApi');
 const data = require('./data.json');
-const PropertyList = require('../../models/propertyList.js');
+const PropertyList = require('../../js/models/propertyList.js');
 
 class viewModel {
   constructor() {
