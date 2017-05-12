@@ -13,7 +13,7 @@ class Property {
     this.id = property.id;
     this.project = property.project;
     this.type = property.type;
-    this.address = property.glg_address;
+    this.address = property.location;
     this.coordinates = property.coordinates;
     this.builtSM = property.built_sm;
     this.lotSM = property.lot_sm;
