@@ -5,7 +5,7 @@
 
       <div data-bind="ifnot: $parent.isLoading" class="content">
         <section>
-          <figure data-bind: "if: extended">
+          <figure data-bind="ifnot: basic">
             <img data-bind="attr: { src: cover_image, title: title }" />
             <figcaption data-bind="text: address"></figcaption>
           </figure>
@@ -13,29 +13,15 @@
 
         <section>
           <div class="details">
-            <span class="address" data-bind: "ifnot: extended, text: address"></span>
-            <div>
-              <em data-bind="text: bedrooms"></em><span>Bedrooms</span>
-            </div>
-            <div>
-              <em data-bind="text: bathrooms"></em><span>Bathrooms</span>
-            </div>
-            <div>
-              <em data-bind="text: area"></em><span>m<sup>2</sup></span>
-            </div>
+            <span class="address" data-bind: "if: basic, text: address"></span>
+            <span><em data-bind="text: bedrooms"></em> Bedrooms</span>
+            <span><em data-bind="text: bathrooms"></em> Bathrooms</span>
+            <span><em data-bind="text: area"></em> m<sup>2</sup></span>
           </div>
 
-          <div data-bind="if: extended" class="api">
-            <div>
-              <span>Rating</span><em data-bind="text: overall_rating"></em>
-              <p data-bind="if: rating_count">
-                *From <span data-bind="text: rating_count"></span> review(s)
-              </p>
-            </div>
-            <div>
-              <span>For more information call</span><em data-bind="text: phone"></em>
-            </div>
-            <p>Information provided by <span data-bind="text: source"></span></p>
+          <div data-bind="ifnot: basic" class="api">
+            <span class="rating">Rating: <em data-bind="text: overall_rating"></em></span>
+            <span class="phone">For more information call: <em data-bind="text: phone"></em></span>
           </div>
 
           <div class="price">For sale: <span data-bind="text: salePrice"></span></div>

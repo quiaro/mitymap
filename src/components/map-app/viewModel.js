@@ -104,11 +104,12 @@ class viewModel {
    * @param {object[]} markers - Array of Marker objects to attach
    */
   addMarkers(markers) {
+    const map = this.map;
     if (this.dropMarkers) {
       markers.forEach((marker, i) => {
         // Space the markers drop animation to reduce the possibility of jittering
         setTimeout(() => {
-          marker.setMap(this.map);
+          marker.setMap(map);
         }, i * 20);
       });
     } else {
@@ -116,7 +117,7 @@ class viewModel {
         // Cancel the animations on all markers
         marker.setOptions({
           animation: null,
-          map: this.map
+          map: map
         });
       });
     }
