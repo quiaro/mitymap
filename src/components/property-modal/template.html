@@ -6,22 +6,27 @@
       <div data-bind="ifnot: $parent.isLoading" class="content">
         <section>
           <figure data-bind="ifnot: basic">
-            <img data-bind="attr: { src: cover_image, title: title }" />
+            <img data-bind="attr: { src: photo, title: title }" />
             <figcaption data-bind="text: address"></figcaption>
           </figure>
         </section>
 
         <section>
           <div class="details">
-            <span class="address" data-bind: "if: basic, text: address"></span>
-            <span><em data-bind="text: bedrooms"></em> Bedrooms</span>
-            <span><em data-bind="text: bathrooms"></em> Bathrooms</span>
+            <div data-bind="ifnot: isLot">
+              <span><em data-bind="text: bedrooms"></em> Bedrooms</span>
+              <span><em data-bind="text: bathrooms"></em> Bathrooms</span>
+            </div>
             <span><em data-bind="text: area"></em> m<sup>2</sup></span>
+            <span class="address" data-bind: "if: basic, text: address"></span>
           </div>
 
           <div data-bind="ifnot: basic" class="api">
-            <span class="rating">Rating: <em data-bind="text: overall_rating"></em></span>
-            <span class="phone">For more information call: <em data-bind="text: phone"></em></span>
+            <span class="rating">Rating: <em data-bind="text: rating"></em></span>
+            <span class="phone">For more information call: <em data-bind="text: phone_number"></em></span>
+            <div class="website" data-bind="if: website">
+              <a data-bind="attr: { href: website }, text: website"></a>
+            </div>
           </div>
 
           <div class="price">For sale: <span data-bind="text: salePrice"></span></div>

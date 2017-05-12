@@ -1,6 +1,6 @@
 const ko = require('knockout');
 const VendorAPI = require('../../js/vendorAPI.js');
-const { capitalizeFirstLetter } = require('../../js/utils.js');
+const { capitalizeFirstLetter, moneyFormat } = require('../../js/utils.js');
 
 class viewModel {
   constructor(params) {
@@ -38,12 +38,25 @@ class viewModel {
     const title = `${type} in ${property.project}`;
     return {
       title: title,
+      isLot: property.isLot,
       address: property.address,
       bedrooms: property.bedrooms,
       bathrooms: property.bathrooms,
       area: property.area,
-      salePrice: property.salePrice
+      salePrice: moneyFormat.to(property.salePrice)
     };
+  }
+
+  getAdditionalPropertyData(placeResult) {
+    return {
+      photo: placeResult.photos[0].getUrl({
+        maxHeight: 400,
+        maxWidth: 400,
+      }),
+      phone_number: placeResult.formatted_phone_number,
+      rating: placeResult.rating,
+      website: placeResult.website
+    }
   }
 
   /**
@@ -64,9 +77,10 @@ class viewModel {
     this.property(propertyData);
 
     this.vendorAPI.fetchPropertyDetails(property)
-      .then(apiData => {
-        console.info(apiData);
-        propertyData = Object.assign({}, propertyData, apiData, { basic: true });
+      .then(placeResult => {
+        console.info(placeResult);
+        const propertyDetails = this.getAdditionalPropertyData(placeResult);
+        propertyData = Object.assign({}, propertyData, propertyDetails, { basic: false });
         // Update observable with property data (merged with API
         // data) and stop loading spinner
         this.property(propertyData);
