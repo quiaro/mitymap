@@ -1,3 +1,5 @@
+const { TYPE_APARTMENT, TYPE_HOUSE, TYPE_LOT } = require('../constants.js');
+
 /*
  * Model to encapsulate data for a property
  */
@@ -31,6 +33,14 @@ class Property {
   }
 
   /**
+   * Is this propety a lot?
+   * @return {boolean} - Returns true if the property is a lot
+   */
+  get isLot() {
+    return this.type === TYPE_LOT;
+  }
+
+  /**
    * Price per square meter of rental price.
    * @return {integer} - -1 if the value cannot be computed
    */
@@ -58,13 +68,13 @@ class Property {
    */
   static types() {
     return [{
-      value: 'apartment',
+      value: TYPE_APARTMENT,
       label: 'Apartment'
     }, {
-      value: 'house',
+      value: TYPE_HOUSE,
       label: 'House'
     }, {
-      value: 'lot',
+      value: TYPE_LOT,
       label: 'Lot'
     }];
   }
