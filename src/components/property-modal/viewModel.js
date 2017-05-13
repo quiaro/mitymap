@@ -1,6 +1,6 @@
 const ko = require('knockout');
 const VendorAPI = require('../../js/vendorAPI.js');
-const { capitalizeFirstLetter, moneyFormat } = require('../../js/utils.js');
+const { capitalizeFirstLetter, trimAddress, moneyFormat } = require('../../js/utils.js');
 
 class viewModel {
   constructor(params) {
@@ -39,7 +39,7 @@ class viewModel {
     return {
       title: title,
       isLot: property.isLot,
-      address: property.address,
+      address: `${property.project} - ${trimAddress(property.address)}`,
       bedrooms: property.bedrooms,
       bathrooms: property.bathrooms,
       area: property.area,
@@ -49,7 +49,7 @@ class viewModel {
 
   getAdditionalPropertyData(placeResult) {
     return {
-      photo: placeResult.photos[0].getUrl({
+      photo: placeResult.photos && placeResult.photos.length && placeResult.photos[0].getUrl({
         maxHeight: 400,
         maxWidth: 400,
       }),
@@ -65,7 +65,7 @@ class viewModel {
    */
   loadPropertyData(property) {
     const basicPropertyData = this.getBasicPropertyData(property);
-    let propertyData = Object.assign(basicPropertyData, { basic: true });
+    let propertyData = Object.assign(basicPropertyData, { basic: true, photo: false });
 
     if (!this.vendorAPI) {
       return this.property(propertyData);
@@ -78,7 +78,6 @@ class viewModel {
 
     this.vendorAPI.fetchPropertyDetails(property)
       .then(placeResult => {
-        console.info(placeResult);
         const propertyDetails = this.getAdditionalPropertyData(placeResult);
         propertyData = Object.assign({}, propertyData, propertyDetails, { basic: false });
         // Update observable with property data (merged with API
@@ -86,7 +85,7 @@ class viewModel {
         this.property(propertyData);
         this.isLoading(false);
       }, (e) => {
-        console.error(e);
+        console.warn(e);
         // Stop loading spinner
         this.isLoading(false);
       });

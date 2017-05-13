@@ -3,9 +3,9 @@
     <article>
       <h3 data-bind="text: title"></h3>
 
-      <div data-bind="ifnot: $parent.isLoading" class="content">
+      <div data-bind="ifnot: $parent.isLoading, css: { twocol: photo }" class="content">
         <section>
-          <figure data-bind="ifnot: basic">
+          <figure data-bind="if: (!basic && photo)">
             <img data-bind="attr: { src: photo, title: title }" />
             <figcaption data-bind="text: address"></figcaption>
           </figure>
@@ -17,13 +17,15 @@
               <span><em data-bind="text: bedrooms"></em> Bedrooms</span>
               <span><em data-bind="text: bathrooms"></em> Bathrooms</span>
             </div>
-            <span><em data-bind="text: area"></em> m<sup>2</sup></span>
-            <span class="address" data-bind: "if: basic, text: address"></span>
+            <span class="area"><em data-bind="text: area"></em> m<sup>2</sup></span>
+            <div data-bind="ifnot: photo" class="address">
+              <span data-bind="text: address"></span>
+            </div>
           </div>
 
-          <div data-bind="ifnot: basic" class="api">
+          <div data-bind="if: (!basic && rating && phone_number), css: { empty: basic }" class="api">
             <span class="rating">Rating: <em data-bind="text: rating"></em></span>
-            <span class="phone">For more information call: <em data-bind="text: phone_number"></em></span>
+            <span class="phone">For information, call: <em data-bind="text: phone_number"></em></span>
             <div class="website" data-bind="if: website">
               <a data-bind="attr: { href: website }, text: website"></a>
             </div>
@@ -38,14 +40,16 @@
         </div>
       </div>
 
-      <div data-bind="if: $parent.isLoading" class="preloader-wrapper active">
-        <div class="spinner-layer spinner-green-only">
-          <div class="circle-clipper left">
-            <div class="circle"></div>
-          </div><div class="gap-patch">
-            <div class="circle"></div>
-          </div><div class="circle-clipper right">
-            <div class="circle"></div>
+      <div data-bind="if: $parent.isLoading" class="modal-spinner">
+        <div class="preloader-wrapper active">
+          <div class="spinner-layer spinner-green-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
           </div>
         </div>
       </div>
