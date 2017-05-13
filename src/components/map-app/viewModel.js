@@ -14,7 +14,6 @@ class viewModel {
     // Reference to Google map is initialized via a custom binding
     this.map = null;
     this.markers = new Map();  // Markers map where the key is the property ID
-    this.dropMarkers = false;
   }
 
   /**
@@ -55,7 +54,6 @@ class viewModel {
         if (!marker.getMap()) {
           // If the marker isn't attached to the map, add it to the pending
           // markers array
-          marker.setAnimation(google.maps.Animation.DROP)
           pendingMarkers.push(marker);
         }
         bounds.extend(marker.getPosition());
@@ -72,7 +70,6 @@ class viewModel {
         position: prop.coordinates,
         title: prop.project,
         icon: 'http://maps.google.com/mapfiles/kml/pal5/icon12.png',
-        animation: google.maps.Animation.DROP,
         id: id
       });
       // On marker click, select property
@@ -91,36 +88,23 @@ class viewModel {
       map.fitBounds(bounds);
     }
 
-    // Run a delay before dropping the markers on the map to give the map
+    // Run a delay before showing the markers on the map to give the map
     // some time to re-render.
-    this.dropMarkers = true;
     setTimeout(() => {
       this.addMarkers(pendingMarkers);
     }, 800);
   }
 
   /**
-   * Attach a list of markers to the map (with or without a drop animation)
+   * Attach a list of markers to the map
    * @param {object[]} markers - Array of Marker objects to attach
    */
   addMarkers(markers) {
     const map = this.map;
-    if (this.dropMarkers) {
-      markers.forEach((marker, i) => {
-        // Space the markers drop animation to reduce the possibility of jittering
-        setTimeout(() => {
-          marker.setMap(map);
-        }, i * 20);
-      });
-    } else {
-      markers.forEach(marker => {
-        // Cancel the animations on all markers
-        marker.setOptions({
-          animation: null,
-          map: map
-        });
-      });
-    }
+    markers.forEach(marker => {
+      // Cancel the animations on all markers
+      marker.setMap(map);
+    });
   }
 
   /**
@@ -129,10 +113,6 @@ class viewModel {
    */
   selectProperty(property) {
     this.selectedProperty(property);
-
-    // If the markers have not yet been placed on the map (the timer to call
-    // addMarkers has not run out), then cancel the drop animations.
-    this.dropMarkers = false;
   }
 
   /**
