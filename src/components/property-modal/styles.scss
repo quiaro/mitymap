@@ -25,6 +25,7 @@ property-modal {
         section {
           text-align: center;
           letter-spacing: 1px;
+          position: relative;
 
           figure {
             margin: 0;
@@ -67,6 +68,16 @@ property-modal {
           }
 
           > .details {
+            text-align: left;
+            margin-left: 10px;
+
+            @media only screen and (min-width: 700px) {
+              text-align: center;
+            }
+            @media only screen and (min-width: 860px) {
+              text-align: left;
+            }
+
             span {
               display: block;
               font-size: 1rem;
@@ -93,6 +104,22 @@ property-modal {
               font-size: 1.4rem;
               color: #18613f;
               padding-left: 2px;
+            }
+          }
+
+          > .weather {
+            position: absolute;
+            top: 0;
+            right: 10px;
+
+            @media only screen and (min-width: 860px) {
+              top: -20px;
+            }
+
+            > span {
+              font-size: 0.8rem;
+
+              em { font-style: normal; }
             }
           }
         }

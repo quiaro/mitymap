@@ -59,6 +59,16 @@ class viewModel {
     }
   }
 
+  getWeatherData(weatherResult) {
+    const weatherIconURL = 'http://openweathermap.org/img/w/';
+    const hasWeather = weatherResult.weather && weatherResult.weather.length;
+    return {
+      weather_icon: hasWeather && (weatherIconURL + weatherResult.weather[0].icon + '.png'),
+      weather_description: hasWeather && weatherResult.weather[0].description,
+      weather_temperature: weatherResult.main.temp
+    };
+  }
+
   /**
    * Load property data into property observable. If the vendorAPI failed to
    * initialize, we'll still display the most basic information on the property.
@@ -76,19 +86,27 @@ class viewModel {
     this.isLoading(true);
     this.property(propertyData);
 
-    this.vendorAPI.fetchPropertyDetails(property)
-      .then(placeResult => {
-        const propertyDetails = this.getAdditionalPropertyData(placeResult);
-        propertyData = Object.assign({}, propertyData, propertyDetails, { basic: false });
+    const weatherDetailsPromise = this.vendorAPI.fetchWeatherDetails(property.coordinates);
+    const propertyDetailsPromise = this.vendorAPI.fetchPropertyDetails(property);
+
+    Promise.all([ weatherDetailsPromise, propertyDetailsPromise ])
+      .then(data => {
+        const weatherData = this.getWeatherData(data[0]);
+        const propertyDetails = this.getAdditionalPropertyData(data[1]);
+        propertyData = Object.assign({}, propertyData, weatherData, propertyDetails, { basic: false });
+
         // Update observable with property data (merged with API
         // data) and stop loading spinner
         this.property(propertyData);
         this.isLoading(false);
-      }, (e) => {
+      })
+      .catch((e) => {
+        // Additional information is not crucial so any failures will only
+        // be logged as warnings
         console.warn(e);
         // Stop loading spinner
         this.isLoading(false);
-      });
+      })
   }
 
   onActionBtnClick() {

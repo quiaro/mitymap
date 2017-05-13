@@ -66,6 +66,22 @@ class vendorAPI {
         throw error;
       })
   }
+
+  fetchWeatherDetails(coordinates) {
+    return new Promise((resolve, reject) => {
+      const weatherAPI = 'http://api.openweathermap.org/data/2.5/weather?callback=?'
+      $.getJSON(weatherAPI, {
+        lat: coordinates.lat,
+        lon: coordinates.lng,
+        APPID: '24f73f69056e071f878a8d5c5a8b9afb',
+        units: 'metric'
+      }).done((data) => {
+        resolve(data);
+      }).fail(e => {
+        reject(e);
+      })
+    })
+  }
 }
 
 module.exports = vendorAPI;

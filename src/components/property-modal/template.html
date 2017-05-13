@@ -23,16 +23,20 @@
             </div>
           </div>
 
-          <div data-bind="if: (!basic && rating && phone_number),
-                          css: { empty: (!rating && !phone_number) }" class="api">
-            <span class="rating">Rating: <em data-bind="text: rating"></em></span>
-            <span class="phone">For information, call: <em data-bind="text: phone_number"></em></span>
+          <div data-bind="ifnot: basic,
+                          css: { empty: (!rating && !phone_number && !website) }" class="api">
+            <span data-bind="visible: rating" class="rating">Rating: <em data-bind="text: rating"></em></span>
+            <span data-bind="visible: phone_number" class="phone">For information, call: <em data-bind="text: phone_number"></em></span>
             <div class="website" data-bind="if: website">
               <a data-bind="attr: { href: website }, text: website"></a>
             </div>
           </div>
 
           <div class="price">For sale: <span data-bind="text: salePrice"></span></div>
+          <div class="weather">
+            <img class="icon" data-bind="attr: { src: weather_icon, title: weather_description }" />
+            <span><em data-bind="text: weather_temperature"></em>°C</span>
+          </div>
         </section>
 
         <div class="actions">
