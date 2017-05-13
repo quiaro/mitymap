@@ -36,12 +36,8 @@ filters-panel {
           top: 0;
         }
 
-        input[type='checkbox'] + label {
-          top: 0.5rem;
-        }
-
-        > button {
-          margin-top: 20px;
+        > div {
+          margin-bottom: 5px;
         }
       }
 

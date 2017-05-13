@@ -14,7 +14,7 @@ class viewModel {
 
     // Properties specific to this component's context
     this.propTypeSelected = ko.observable('0');
-    this.isLocationAnywhere = ko.observable(false);
+    this.searchArea = ko.observable('anywhere');
 
     this.priceBounds = ko.observableArray();
     this.minPrice = ko.observable();

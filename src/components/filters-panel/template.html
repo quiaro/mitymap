@@ -14,11 +14,21 @@
     <div class='input-field property-location' data-bind="visible: propTypeSelected() !== '0'">
       <label>Where should the properties be located?</label>
       <div>
-       <input type="checkbox" id="place-checkbox" data-bind="checked: isLocationAnywhere" />
-       <label for="place-checkbox">Anywhere in the country</label>
+       <input type="radio"
+              class="with-gap"
+              id="radio-anywhere"
+              value="anywhere"
+              data-bind="checked: searchArea" />
+       <label for="radio-anywhere">All Provinces</label>
       </div>
-      <button class="waves-effect waves-light btn"
-              data-bind="enable: !isLocationAnywhere()">Select area on the map</button>
+      <div>
+       <input type="radio"
+              class="with-gap"
+              id="radio-gam"
+              value="gam"
+              data-bind="checked: searchArea" />
+       <label for="radio-gam">Central Valley</label>
+      </div>
     </div>
     <div class="filters" data-bind="visible: propTypeSelected() !== '0'">
       <div class='divider'></div>
