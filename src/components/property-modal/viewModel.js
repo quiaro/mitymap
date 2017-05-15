@@ -45,17 +45,19 @@ class viewModel {
       area: property.area,
       salePrice: moneyFormat.to(property.salePrice),
       photo: false,
+      phone_number: false,
       rating: false,
       website: false
     };
   }
 
   getAdditionalPropertyData(placeResult) {
+    const photo = placeResult.photos && placeResult.photos.length && placeResult.photos[0].getUrl({
+      maxHeight: 400,
+      maxWidth: 400,
+    });
     return {
-      photo: placeResult.photos && placeResult.photos.length && placeResult.photos[0].getUrl({
-        maxHeight: 400,
-        maxWidth: 400,
-      }),
+      photo: photo ? photo : false,
       phone_number: placeResult.formatted_phone_number,
       rating: placeResult.rating,
       website: placeResult.website
