@@ -8,7 +8,7 @@
   },
   "keywords": [],
   "author": "David Quirós",
-  "license": "cc-by-nc-nd",
+  "license": "MIT",
   "browserify": {
     "transform": [
       "browserify-global-shim"
