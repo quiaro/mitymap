@@ -43,7 +43,10 @@ class viewModel {
       bedrooms: property.bedrooms,
       bathrooms: property.bathrooms,
       area: property.area,
-      salePrice: moneyFormat.to(property.salePrice)
+      salePrice: moneyFormat.to(property.salePrice),
+      photo: false,
+      rating: false,
+      website: false
     };
   }
 
@@ -75,7 +78,7 @@ class viewModel {
    */
   loadPropertyData(property) {
     const basicPropertyData = this.getBasicPropertyData(property);
-    let propertyData = Object.assign(basicPropertyData, { basic: true, photo: false });
+    let propertyData = Object.assign(basicPropertyData, { basic: true });
 
     if (!this.vendorAPI) {
       return this.property(propertyData);

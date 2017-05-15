@@ -65,7 +65,6 @@ class viewModel {
     // visible properties.
     const propertyList = [];
     const visibleProperties = this.visibleProperties();
-    console.info('filterVisiblePropertiesByLocation!');
 
     visibleProperties.forEach((property) => {
       // The containsLocation method throws an error with a latLng literal
@@ -80,7 +79,6 @@ class viewModel {
     if (propertyList.length < visibleProperties.length) {
       // Update the visible properties list only if the filtered list has a
       // different number of items than the original list.
-      console.info('Updating visible properties list!');
       this.updatePropertiesHandler(propertyList);
     }
   }
