@@ -33,7 +33,7 @@
           </div>
 
           <div class="price">For sale: <span data-bind="text: salePrice"></span></div>
-          <div class="weather">
+          <div class="weather" data-bind="ifnot: basic">
             <img class="icon" data-bind="attr: { src: weather_icon, title: weather_description }" />
             <span><em data-bind="text: weather_temperature"></em>°C</span>
           </div>
@@ -43,6 +43,10 @@
           <button class="modal-action waves-effect waves-light btn"
                   data-bind="click: $parent.onActionBtnClick.bind($parent)">View in Map</button>
         </div>
+      </div>
+
+      <div class='attribution' data-bind="ifnot: basic">
+        <p>Weather data courtesy of <a href='http://openweathermap.org/'>OpenWeatherMap</a></p>
       </div>
 
       <div data-bind="if: $parent.isLoading" class="modal-spinner">
