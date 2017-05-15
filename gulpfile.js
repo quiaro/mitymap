@@ -13,13 +13,15 @@ const sourcemaps = require('gulp-sourcemaps');
 const gutil = require('gulp-util');
 const stringify = require('stringify');
 
-gulp.task('default', [
+gulp.task('build', [
   'copy-static',
   'bundle-materialize-css',
   'bundle-materialize-js',
   'styles',
   'lint',
-  'scripts'], function defaultTask() {
+  'scripts']);
+
+gulp.task('default', ['build'], function defaultTask() {
     gulp.watch('src/**/*.scss').on('change', function() {
       gulp.start('styles');
       browserSync.reload();
@@ -84,7 +86,7 @@ gulp.task('bundle-materialize-js', function bundleMaterializeTask() {
   gulp.src(['lib/materialize-0.98.2/js/*.js',
             'lib/materialize-0.98.2/extras/nouislider.js'])
       .pipe(concat('materialize.js'))
-      // .pipe(uglify())
+      .pipe(uglify())
       .pipe(gulp.dest('dist/lib/materialize'))
 })
 
