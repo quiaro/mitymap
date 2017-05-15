@@ -11,25 +11,14 @@
       <label>What are you looking for?</label>
     </div>
 
-    <div class='input-field property-location' data-bind="visible: propTypeSelected() !== '0'">
-      <label>Where should the properties be located?</label>
-      <div>
-       <input type="radio"
-              class="with-gap"
-              id="radio-anywhere"
-              value="anywhere"
-              data-bind="checked: searchArea" />
-       <label for="radio-anywhere">All Provinces</label>
-      </div>
-      <div>
-       <input type="radio"
-              class="with-gap"
-              id="radio-gam"
-              value="gam"
-              data-bind="checked: searchArea" />
-       <label for="radio-gam">Central Valley</label>
-      </div>
-    </div>
+    <location-filter data-bind="visible: propTypeSelected() !== '0'"
+                     params="map: map,
+                             properties: properties,
+                             propFilters: propFilters,
+                             propTypeSelected: propTypeSelected,
+                             visibleProperties: visibleProperties,
+                             updatePropertiesHandler: updatePropertiesHandler"></location-filter>
+
     <div class="filters" data-bind="visible: propTypeSelected() !== '0'">
       <div class='divider'></div>
       <strong>Filters</strong>

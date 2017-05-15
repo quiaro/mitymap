@@ -1,9 +1,10 @@
 @import "variables";
 @import "common";
 
+@import "../components/filters-panel/styles";
+@import "../components/location-filter/styles";
 @import "../components/map-app/styles";
 @import "../components/map-sidenav/styles";
-@import "../components/filters-panel/styles";
-@import "../components/properties-panel/styles";
 @import "../components/property-modal/styles";
+@import "../components/properties-panel/styles";
 @import "../components/range-filter/styles";

@@ -6,7 +6,8 @@
 </a>
 <div id="side-nav" class="side-nav" data-bind="switchPanel: isShowingFilters">
 
-  <filters-panel params="clickHandler: closeSideNav.bind($component),
+  <filters-panel params="map: map,
+                         clickHandler: closeSideNav.bind($component),
                          updatePropertiesHandler: updatePropertiesHandler,
                          doneHandler: switchToProperties.bind($component),
                          properties: properties,

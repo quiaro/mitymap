@@ -4,6 +4,7 @@ const Property = require('../../js/models/property.js');
 class viewModel {
   constructor(params) {
     // Observables (read-only)
+    this.map = params.map;
     this.properties = params.properties;
     this.visibleProperties = params.visibleProperties;
 
@@ -14,7 +15,6 @@ class viewModel {
 
     // Properties specific to this component's context
     this.propTypeSelected = ko.observable('0');
-    this.searchArea = ko.observable('anywhere');
 
     this.priceBounds = ko.observableArray();
     this.minPrice = ko.observable();

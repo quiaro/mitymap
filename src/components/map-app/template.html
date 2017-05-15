@@ -1,10 +1,13 @@
-<map-sidenav params="properties: properties,
+<div class="google-map" data-bind="mapSetup"></div>
+
+<map-sidenav params="map: map,
+                     properties: properties,
                      visibleProperties: visibleProperties,
                      updatePropertiesHandler: updateProperties.bind($component),
                      onOpen: resetSelectedProperty.bind($component),
                      onClose: refreshMapAndAttachMarkers.bind($component),
                      onSelectProperty: selectProperty.bind($component)"></map-sidenav>
-<div class="google-map" data-bind="mapSetup"></div>
+
 <property-modal params="map: map,
                         selectedProperty: selectedProperty,
                         onActionBtnClick: animateSelectedOnMap.bind($component)"></property-modal>

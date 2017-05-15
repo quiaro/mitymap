@@ -2,6 +2,7 @@ const ko = require('knockout');
 
 class viewModel {
   constructor(params) {
+    this.map = params.map;
     this.properties = params.properties;
     this.visibleProperties = params.visibleProperties;
     this.updatePropertiesHandler = params.updatePropertiesHandler;
