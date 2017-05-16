@@ -1,13 +1,23 @@
-<div class="google-map" data-bind="mapSetup"></div>
+<div data-bind="if: googleApiLoaded">
+  <div class="google-map" data-bind="mapSetup"></div>
 
-<map-sidenav params="map: map,
-                     properties: properties,
-                     visibleProperties: visibleProperties,
-                     updatePropertiesHandler: updateProperties.bind($component),
-                     onOpen: resetSelectedProperty.bind($component),
-                     onClose: refreshMapAndAttachMarkers.bind($component),
-                     onSelectProperty: selectProperty.bind($component)"></map-sidenav>
+  <map-sidenav params="map: map,
+                       properties: properties,
+                       visibleProperties: visibleProperties,
+                       updatePropertiesHandler: updateProperties.bind($component),
+                       onOpen: resetSelectedProperty.bind($component),
+                       onClose: refreshMapAndAttachMarkers.bind($component),
+                       onSelectProperty: selectProperty.bind($component)"></map-sidenav>
 
-<property-modal params="map: map,
+  <property-modal params="map: map,
                         selectedProperty: selectedProperty,
                         onActionBtnClick: animateSelectedOnMap.bind($component)"></property-modal>
+</div>
+
+<div data-bind="ifnot: googleApiLoaded" class="load-error">
+  <div class="icon">
+    <i>!</i>
+  </div>
+  <h1>Oops! Something went wrong :(</h1>
+  <p>There was an error loading Google Maps. See the Javascript console for technical details.</p>
+</div>

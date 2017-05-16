@@ -1,3 +1,37 @@
 map-app {
   .google-map { height: 100vh; }
+
+  .load-error {
+    height: 100vh;
+    width: 100vw;
+    background-color: #bebebe;
+    text-align: center;
+    padding: 15vh 5vw;
+    padding-top: 15vh;
+
+    .icon {
+      display: block;
+      height: 4rem;
+      width: 4rem;
+      border-radius: 50%;
+      background-color: #5b5b5b;
+      margin: 0 auto;
+
+      > i {
+        font-size: 2.9rem;
+        color: white;
+        font-weight: bold;
+        font-style: normal;
+      }
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-top: 1.5rem;
+
+      @media only screen and (min-width: 860px) {
+        font-size: 3.2rem;
+      }
+    }
+  }
 }
