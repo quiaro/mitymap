@@ -19,7 +19,8 @@
     "knockout": "ko",
     "googleApi": "google",
     "noUiSlider": "noUiSlider",
-    "wNumb": "wNumb"
+    "wNumb": "wNumb",
+    "Materialize": "Materialize"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.14.0",

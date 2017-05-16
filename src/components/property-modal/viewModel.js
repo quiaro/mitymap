@@ -1,4 +1,5 @@
 const ko = require('knockout');
+const Materialize = require('Materialize');
 const VendorAPI = require('../../js/VendorAPI.js');
 const { capitalizeFirstLetter, trimAddress, moneyFormat } = require('../../js/utils.js');
 
@@ -108,6 +109,7 @@ class ViewModel {
       .catch((e) => {
         // Additional information is not crucial so any failures will only
         // be logged as warnings
+        Materialize.toast('Unable to retrieve weather & property details', 3000);
         console.warn(e);
         // Stop loading spinner
         this.isLoading(false);
