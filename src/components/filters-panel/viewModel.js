@@ -1,7 +1,7 @@
 const ko = require('knockout');
-const Property = require('../../js/models/property.js');
+const Property = require('../../js/models/Property.js');
 
-class viewModel {
+class ViewModel {
   constructor(params) {
     // Observables (read-only)
     this.map = params.map;
@@ -83,4 +83,4 @@ class viewModel {
   }
 }
 
-module.exports = viewModel;
+module.exports = ViewModel;

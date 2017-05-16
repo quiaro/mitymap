@@ -4,7 +4,7 @@ const google = require('googleApi');
  * Class that uses 3rd-party APIs (Google Places) to fetch additional
  * information related to a property.
  */
-class vendorAPI {
+class VendorAPI {
 
   /**
    * @constructor
@@ -12,7 +12,7 @@ class vendorAPI {
    */
   constructor(googleMap) {
     if (!googleMap) {
-      throw new ReferenceError('Google map is required to instantiate vendorAPI');
+      throw new ReferenceError('Google map is required to instantiate VendorAPI');
     }
     this.placeService = new google.maps.places.PlacesService(googleMap);
   }
@@ -84,4 +84,4 @@ class vendorAPI {
   }
 }
 
-module.exports = vendorAPI;
+module.exports = VendorAPI;

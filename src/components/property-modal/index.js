@@ -1,5 +1,5 @@
 const ko = require('knockout');
-const viewModel = require('./viewModel.js');
+const ViewModel = require('./ViewModel.js');
 const template = require('./template.html');
 
 ko.bindingHandlers.propertyModalSetup = {
@@ -26,6 +26,6 @@ ko.bindingHandlers.propertyModalSetup = {
 };
 
 module.exports = {
-  viewModel: viewModel,
+  viewModel: ViewModel,
   template: template
 }

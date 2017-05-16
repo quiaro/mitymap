@@ -1,7 +1,7 @@
-const viewModel = require('./viewModel.js');
+const ViewModel = require('./ViewModel.js');
 const template = require('./template.html');
 
 module.exports = {
-  viewModel: viewModel,
+  viewModel: ViewModel,
   template: template
 }

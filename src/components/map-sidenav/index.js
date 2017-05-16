@@ -1,5 +1,5 @@
 const ko = require('knockout');
-const viewModel = require('./viewModel.js');
+const ViewModel = require('./ViewModel.js');
 const template = require('./template.html');
 const filtersPanel = require('../filters-panel');
 const propertiesPanel = require('../properties-panel');
@@ -86,6 +86,6 @@ ko.bindingHandlers.switchPanel = {
 };
 
 module.exports = {
-  viewModel: viewModel,
+  viewModel: ViewModel,
   template: template
 }

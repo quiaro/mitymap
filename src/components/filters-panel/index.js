@@ -1,5 +1,5 @@
 const ko = require('knockout');
-const viewModel = require('./viewModel.js');
+const ViewModel = require('./ViewModel.js');
 const template = require('./template.html');
 const rangeFilter = require('../range-filter');
 const locationFilter = require('../location-filter');
@@ -15,6 +15,6 @@ ko.bindingHandlers.selectSetup = {
 };
 
 module.exports = {
-  viewModel: viewModel,
+  viewModel: ViewModel,
   template: template
 }

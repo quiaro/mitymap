@@ -1,7 +1,7 @@
 const ko = require('knockout');
 const google = require('googleApi');
 const mapStyles = require('./map-styles.json');
-const viewModel = require('./viewModel.js');
+const ViewModel = require('./ViewModel.js');
 const template = require('./template.html');
 const mapSideNav = require('../map-sidenav');
 const propertyModal = require('../property-modal');
@@ -32,6 +32,6 @@ ko.bindingHandlers.mapSetup = {
 };
 
 module.exports = {
-  viewModel: viewModel,
+  viewModel: ViewModel,
   template: template
 }

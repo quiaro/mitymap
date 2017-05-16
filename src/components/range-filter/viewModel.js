@@ -1,5 +1,5 @@
 
-class viewModel {
+class ViewModel {
   constructor(params) {
     this.filter = params.filter;
     this.bounds = params.bounds;
@@ -10,4 +10,4 @@ class viewModel {
   }
 }
 
-module.exports = viewModel;
+module.exports = ViewModel;

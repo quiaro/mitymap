@@ -1,9 +1,9 @@
 const ko = require('knockout');
 const google = require('googleApi');
 const data = require('./data.json');
-const PropertyList = require('../../js/models/propertyList.js');
+const PropertyList = require('../../js/models/PropertyList.js');
 
-class viewModel {
+class ViewModel {
   constructor() {
     // The complete property list will not vary since all properties are
     // loaded at once, so it's not necessary to declare an observable for it.
@@ -141,4 +141,4 @@ class viewModel {
   }
 }
 
-module.exports = viewModel;
+module.exports = ViewModel;

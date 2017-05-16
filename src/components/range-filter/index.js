@@ -1,7 +1,7 @@
 const ko = require('knockout');
 const noUiSlider = require('noUiSlider');
 const wNumb = require('wNumb');
-const viewModel = require('./viewModel.js');
+const ViewModel = require('./ViewModel.js');
 const template = require('./template.html');
 
 ko.bindingHandlers.rangeSetup = {
@@ -50,6 +50,6 @@ ko.bindingHandlers.rangeSetup = {
 };
 
 module.exports = {
-  viewModel: viewModel,
+  viewModel: ViewModel,
   template: template
 }

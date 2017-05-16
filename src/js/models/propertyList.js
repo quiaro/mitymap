@@ -1,4 +1,4 @@
-const Property = require('./property.js')
+const Property = require('./Property.js')
 
 /*
  * Model to encapsulate data for a collection of properties

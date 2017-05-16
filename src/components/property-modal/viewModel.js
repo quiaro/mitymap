@@ -1,8 +1,8 @@
 const ko = require('knockout');
-const VendorAPI = require('../../js/vendorAPI.js');
+const VendorAPI = require('../../js/VendorAPI.js');
 const { capitalizeFirstLetter, trimAddress, moneyFormat } = require('../../js/utils.js');
 
-class viewModel {
+class ViewModel {
   constructor(params) {
     this.selectedProperty = params.selectedProperty;
     this.actionBtnHandler = params.onActionBtnClick;
@@ -120,4 +120,4 @@ class viewModel {
   }
 }
 
-module.exports = viewModel;
+module.exports = ViewModel;

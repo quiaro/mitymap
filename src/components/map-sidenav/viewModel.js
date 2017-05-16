@@ -1,6 +1,6 @@
 const ko = require('knockout');
 
-class viewModel {
+class ViewModel {
   constructor(params) {
     this.map = params.map;
     this.properties = params.properties;
@@ -33,4 +33,4 @@ class viewModel {
   }
 }
 
-module.exports = viewModel;
+module.exports = ViewModel;

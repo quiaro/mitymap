@@ -1,6 +1,6 @@
 const ko = require('knockout');
 
-class viewModel {
+class ViewModel {
   constructor(params) {
     // Observables (read-only)
     this.visibleProperties = params.visibleProperties;
@@ -49,4 +49,4 @@ class viewModel {
   }
 }
 
-module.exports = viewModel;
+module.exports = ViewModel;

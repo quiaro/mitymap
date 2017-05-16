@@ -1,7 +1,7 @@
 const ko = require('knockout');
 const google = require('googleApi');
 
-class viewModel {
+class ViewModel {
   constructor(params) {
     this.properties = params.properties;
     this.propFilters = params.propFilters;
@@ -84,4 +84,4 @@ class viewModel {
   }
 }
 
-module.exports = viewModel;
+module.exports = ViewModel;
