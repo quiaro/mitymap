@@ -5,6 +5,9 @@ const PropertyList = require('../../js/models/PropertyList.js');
 
 class ViewModel {
   constructor() {
+    // Did the google API load without errors?
+    this.googleApiLoaded = !!google;
+
     // The complete property list will not vary since all properties are
     // loaded at once, so it's not necessary to declare an observable for it.
     this.properties = new PropertyList(data);
