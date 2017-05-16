@@ -113,6 +113,9 @@ class ViewModel {
    */
   selectProperty(property) {
     this.selectedProperty(property);
+    const selectedMarker = this.markers.get(property.id);
+    // Add bouncing animation to selected marker
+    selectedMarker.setAnimation(google.maps.Animation.BOUNCE);
   }
 
   /**
@@ -127,17 +130,6 @@ class ViewModel {
       selectedMarker.setAnimation(null);
       this.selectedProperty(null);
     }
-  }
-
-  /**
-   * Clear cache on selected property and remove animation from its
-   * associated marker.
-   */
-  animateSelectedOnMap() {
-    const selectedProperty = this.selectedProperty();
-    const selectedMarker = this.markers.get(selectedProperty.id);
-    // Add bouncing animation to selected marker
-    selectedMarker.setAnimation(google.maps.Animation.BOUNCE);
   }
 }
 

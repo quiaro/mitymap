@@ -115,7 +115,6 @@ class ViewModel {
   }
 
   onActionBtnClick() {
-    this.actionBtnHandler();
     this.isModalOpen(false);
   }
 }
