@@ -1,7 +1,7 @@
 location-filter {
   > .property-location {
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 
     > label {
       position: relative;
@@ -12,7 +12,8 @@ location-filter {
     > div {
       margin-bottom: 5px;
 
-      label {
+      [type=radio]:checked+label, [type=radio]:not(:checked)+label {
+        height: 20px;
         color: #222;
       }
     }

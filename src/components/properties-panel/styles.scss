@@ -1,7 +1,11 @@
 properties-panel {
   > .container {
-    width: $sidenav-panel-width;
+    width: $sidenav-panel-width-sm;
     position: absolute;
+
+    @media only screen and (min-width: 600px) {
+      width: $sidenav-panel-width-md;
+    }
 
     > .sidenav-toggle {
       right: 0;
@@ -17,11 +21,16 @@ properties-panel {
 
     > .content {
       height: 100vh;
-      width: $sidenav-panel-width - $sidenav-toggle-width;
+      width: $sidenav-panel-width-sm - $sidenav-toggle-width;
       background-color: $sidenav-bgcolor;
-      padding: 20px;
+      padding: 15px;
       box-shadow: 0 1px 5px 0 rgba(0,0,0,.12);
       overflow: scroll;
+
+      @media only screen and (min-width: 600px) {
+        width: $sidenav-panel-width-md - $sidenav-toggle-width;
+        padding: 20px;
+      }
 
       .properties table {
         font-size: .8rem;

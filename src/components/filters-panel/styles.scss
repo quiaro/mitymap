@@ -1,7 +1,11 @@
 filters-panel {
   > .container {
-    width: $sidenav-panel-width;
+    width: $sidenav-panel-width-sm;
     position: absolute;
+
+    @media only screen and (min-width: 600px) {
+      width: $sidenav-panel-width-md;
+    }
 
     > .sidenav-toggle {
       right: 0;
@@ -17,20 +21,36 @@ filters-panel {
 
     > .content {
       height: 100vh;
-      width: $sidenav-panel-width - $sidenav-toggle-width;
+      width: $sidenav-panel-width-sm - $sidenav-toggle-width;
       background-color: $sidenav-bgcolor;
-      padding: 20px;
+      padding: 15px;
       box-shadow: 0 1px 5px 0 rgba(0,0,0,.12);
 
+      @media only screen and (min-width: 600px) {
+        width: $sidenav-panel-width-md - $sidenav-toggle-width;
+        padding: 20px;
+      }
+
       > .property-type {
-        margin-bottom: 15px;
+
+        .select-dropdown {
+          margin-bottom: 15px;
+
+          @media only screen and (min-width: 600px) {
+            margin-bottom: 20px;
+          }
+        }
       }
 
       > .filters {
         > strong {
           display: block;
-          margin-top: 20px;
+          margin-top: 15px;
           text-transform: uppercase;
+
+          @media only screen and (min-width: 600px) {
+            margin-top: 20px;
+          }
         }
       }
 
