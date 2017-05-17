@@ -11,7 +11,7 @@ class ViewModel {
     // The complete property list will not vary since all properties are
     // loaded at once, so it's not necessary to declare an observable for it.
     this.properties = new PropertyList(data);
-    this.visibleProperties = ko.observableArray();
+    this.visibleProperties = ko.observableArray(this.properties.getAll());
     this.selectedProperty = ko.observable();
 
     // Reference to Google map is initialized via a custom binding

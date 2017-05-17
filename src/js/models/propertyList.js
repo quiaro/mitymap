@@ -82,6 +82,10 @@ class PropertyList {
       return property['id'] === propertyId;
     });
   }
+
+  getAll() {
+    return this.properties;
+  }
 }
 
 module.exports = PropertyList;

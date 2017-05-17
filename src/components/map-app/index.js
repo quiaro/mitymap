@@ -28,6 +28,7 @@ ko.bindingHandlers.mapSetup = {
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       styles: mapStyles
     });
+    bindingContext.$data.refreshMapAndAttachMarkers();
   }
 };
 
