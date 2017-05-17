@@ -1,0 +1,42 @@
+welcome-modal {
+  .modal {
+    max-height: 80%;
+
+    @media only screen and (min-width: 992px) {
+      width: 80%;
+      max-width: 670px;
+    }
+
+    .modal-content {
+      position: relative;
+      padding-bottom: 10px;
+
+      .title {
+        border-bottom: 1px solid #a8d2bf;
+
+        b {
+          display: block;
+          font-size: 1.6rem;
+          line-height: 1.3;
+          padding-bottom: 4px;
+          letter-spacing: 1px;
+          font-weight: normal;
+
+          @media only screen and (min-width: 600px) {
+            font-size: 1.8rem;
+          }
+        }
+
+        .tagline {
+          display: block;
+          padding-bottom: 8px;
+          color: #9e9e9e;
+        }
+      }
+    }
+
+    .modal-footer {
+      padding: 0 15px 15px;
+    }
+  }
+}
