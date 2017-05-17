@@ -13,8 +13,8 @@ class ViewModel {
     this.closeHandler = params.onClose;
 
     // Properties specific to this component's context
-    this.isSideNavOpen = ko.observable(false);
-    this.isShowingFilters = ko.observable(true);
+    this.isSideNavOpen = ko.observable(true);
+    this.isShowingFilters = ko.observable(false);
   }
   openSideNav() {
     // Sync observable with DOM

@@ -14,7 +14,8 @@ ko.bindingHandlers.sideNavSetup = {
     if (window.matchMedia("(min-width: 600px)").matches) {
       menuWidth = 400;
     }
-    $(element).sideNav({ menuWidth: menuWidth })
+    $(element).sideNav({ menuWidth: menuWidth });
+    $(element).sideNav('show');
   },
   update: function(element, valueAccessor) {
     const observable = valueAccessor();
@@ -34,21 +35,21 @@ ko.bindingHandlers.switchPanel = {
     const filtersPanel = $(element).find('filters-panel > .container');
     const propertiesPanel = $(element).find('properties-panel > .container');
 
-    // Initialize properties panel:
+    // Initialize filters panel:
     // The first time this handler is called, the custom elements have not
     // finished setting up (i.e. filtersPanel and propertiesPanel are empty).
     // Setting a class of 'hidden' on the propertiesPanel is a work-around
     // to keep the propertiesPanel hidden (so it doesn't conflict with the
     // filtersPanel) until this handler is called again via a user interaction.
-    if (propertiesPanel.hasClass('hidden')) {
+    if (filtersPanel.hasClass('hidden')) {
       // The translateX value is quickly set and the 'hidden' class is removed
-      propertiesPanel.velocity(
+      filtersPanel.velocity(
         {'translateX': '-100%'},
         { duration: 1,
           queue: false,
           complete: function() {
             // Open the filters panel
-            propertiesPanel.removeClass('hidden');
+            filtersPanel.removeClass('hidden');
           }
         })
     }
