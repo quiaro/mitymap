@@ -31,6 +31,34 @@ filters-panel {
         padding: 20px;
       }
 
+      > .filter-tip {
+        position: relative;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 1px 5px 0 rgba(0,0,0,.12);
+        padding: 20px 15px 15px;
+        font-size: 0.9rem;
+        margin-bottom: 2.5rem;
+
+        p {
+          margin: 0;
+          line-height: 1.5;
+
+          b {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+        }
+
+        button {
+          margin-top: 10px;
+        }
+
+        &.remove {
+          transition: transform 0.3s;
+          transform: translateX(-$sidenav-panel-width-md);
+        }
+      }
+
       > .property-type {
 
         .select-dropdown {

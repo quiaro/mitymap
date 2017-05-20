@@ -25,6 +25,15 @@ class ViewModel {
     this.minArea = ko.observable();
     this.maxArea = ko.observable();
 
+    // Determine if the filters tip should be shown. The filters tip should
+    // only be shown once so we'll use localStorage to remember if it's already
+    // been shown.
+    this.tipHasBeenShown = localStorage.getItem('filtersTipShown')
+    this.isTipShowing = ko.observable(!this.tipHasBeenShown);
+    this.closeTip = () => {
+      this.isTipShowing(false);
+    }
+
     // Observable that concentrates all property filters. It will delay its
     // change notifications in order to avoid updating the visible properties
     // list continuously.

@@ -4,6 +4,14 @@
   </a>
   <div class='content'>
 
+    <div class="filter-tip" data-bind="filterTipSetup: isTipShowing, css: { remove: !isTipShowing(), hidden: tipHasBeenShown }">
+      <p><b>Filters panel:</b> You can change the filters' values to
+         narrow your search. When you are done you can close the side navigation
+         to view the resulting property markers on the map.</p>
+      <button class="waves-effect waves-light btn"
+              data-bind="click: closeTip">Ok, thanks</button>
+    </div>
+
     <div class='input-field property-type'>
       <select data-bind="value: propTypeSelected, foreach: propertyTypes, selectSetup">
         <option data-bind="attr: { disabled: !enable, value: value }, text: label"></option>
