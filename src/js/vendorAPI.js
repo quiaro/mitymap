@@ -1,4 +1,3 @@
-const google = require('googleApi');
 
 /**
  * Class that uses 3rd-party APIs (Google Places) to fetch additional
@@ -8,13 +7,14 @@ class VendorAPI {
 
   /**
    * @constructor
+   * @param {object} googleApi - Google Maps API
    * @param {object} googleMap - Google Map instance
    */
-  constructor(googleMap) {
+  constructor(googleApi, googleMap) {
     if (!googleMap) {
       throw new ReferenceError('Google map is required to instantiate VendorAPI');
     }
-    this.placeService = new google.maps.places.PlacesService(googleMap);
+    this.placeService = new googleApi.maps.places.PlacesService(googleMap);
   }
 
   getAPIerror(property, errorStatus) {

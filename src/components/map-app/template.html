@@ -1,7 +1,8 @@
-<div data-bind="if: googleApiLoaded">
-  <div class="google-map" data-bind="mapSetup"></div>
+<div data-bind="if: googleApi">
+  <div class="google-map" data-bind="mapSetup: googleApi"></div>
 
-  <map-sidenav params="map: map,
+  <map-sidenav params="googleApi: googleApi,
+                       map: map,
                        properties: properties,
                        visibleProperties: visibleProperties,
                        updatePropertiesHandler: updateProperties.bind($component),
@@ -9,11 +10,12 @@
                        onClose: refreshMapAndAttachMarkers.bind($component),
                        onSelectProperty: selectProperty.bind($component)"></map-sidenav>
 
-  <property-modal params="map: map,
+  <property-modal params="googleApi: googleApi,
+                          map: map,
                           selectedProperty: selectedProperty"></property-modal>
 </div>
 
-<div data-bind="ifnot: googleApiLoaded" class="load-error">
+<div data-bind="ifnot: googleApi" class="load-error">
   <div class="icon">
     <i>!</i>
   </div>

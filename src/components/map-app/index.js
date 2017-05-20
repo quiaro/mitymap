@@ -1,5 +1,4 @@
 const ko = require('knockout');
-const google = require('googleApi');
 const mapStyles = require('./map-styles.json');
 const ViewModel = require('./ViewModel.js');
 const template = require('./template.html');
@@ -17,7 +16,8 @@ ko.bindingHandlers.mapSetup = {
 
     // Constructor creates a new map - only center and zoom are required
     // Map reference is saved in the viewModel
-    bindingContext.$data.map = new google.maps.Map(element, {
+    const googleApi = valueAccessor();
+    bindingContext.$data.map = new googleApi.maps.Map(element, {
       center: {
         lat: 9.9310584,
         lng: -84.0753899
@@ -25,7 +25,7 @@ ko.bindingHandlers.mapSetup = {
       zoom: 13,
       mapTypeControl: false,
       streetViewControl: false,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      mapTypeId: googleApi.maps.MapTypeId.ROADMAP,
       styles: mapStyles
     });
     bindingContext.$data.refreshMapAndAttachMarkers();

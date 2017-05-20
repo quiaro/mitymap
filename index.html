@@ -19,21 +19,20 @@
 <body>
 
   <div id='app'>
-    <map-app></map-app>
+    <map-app params="googleApi: googleApi"></map-app>
   </div>
 
   <script>
     function initApp () {
-      // inject app script after the Google Maps API has finished loading
-      var s = document.createElement("script");
-      s.type = "text/javascript";
-      s.src = "js/app.js";
-      document.body.appendChild(s);
+      // Defer activating Knockout until the google API is available.
+      // Pass the google API as an attribute in the ViewModel of the app.
+      ko.applyBindings({ googleApi: window.google }, document.getElementById('app'));
     }
   </script>
-  <script src="lib/js/jquery-3.2.1.min.js"></script>
-  <script src="lib/js/knockout-3.4.2.min.js"></script>
-  <script src="lib/materialize/materialize.js"></script>
+  <script defer src="lib/js/jquery-3.2.1.min.js"></script>
+  <script defer src="lib/js/knockout-3.4.2.min.js"></script>
+  <script defer src="lib/materialize/materialize.js"></script>
+  <script defer src="js/app.js"></script>
   <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLRFq44hIVCmUNJ3VztXFigs56bvnGZrM&v=3&libraries=places&callback=initApp" onerror="initApp()"></script>
 </body>
 

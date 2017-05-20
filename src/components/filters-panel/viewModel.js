@@ -4,6 +4,7 @@ const Property = require('../../js/models/Property.js');
 class ViewModel {
   constructor(params) {
     // Observables (read-only)
+    this.googleApi = params.googleApi;
     this.map = params.map;
     this.properties = params.properties;
     this.visibleProperties = params.visibleProperties;

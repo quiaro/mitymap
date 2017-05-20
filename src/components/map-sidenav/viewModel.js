@@ -2,6 +2,7 @@ const ko = require('knockout');
 
 class ViewModel {
   constructor(params) {
+    this.googleApi = params.googleApi;
     this.map = params.map;
     this.properties = params.properties;
     this.visibleProperties = params.visibleProperties;

@@ -1,8 +1,8 @@
 const ko = require('knockout');
-const google = require('googleApi');
 
 class ViewModel {
   constructor(params) {
+    this.googleApi = params.googleApi;
     this.properties = params.properties;
     this.propFilters = params.propFilters;
     this.propTypeSelected = params.propTypeSelected;
@@ -12,7 +12,7 @@ class ViewModel {
     // Properties specific to this component's context
     this.searchArea = ko.observable('anywhere');
     // Polygon defining the central valley
-    this.gamArea = new google.maps.Polygon({
+    this.gamArea = new this.googleApi.maps.Polygon({
       clickable: false,
       paths: [
               {lat: 10.0907, lng: -84.4778 },  // San Ramon
@@ -70,8 +70,8 @@ class ViewModel {
       // The containsLocation method throws an error with a latLng literal
       // object so a LatLng instance needs to be created for each coordinate
       // pair
-      const latLng = new google.maps.LatLng(property.coordinates);
-      if (google.maps.geometry.poly.containsLocation(latLng, this.gamArea)) {
+      const latLng = new this.googleApi.maps.LatLng(property.coordinates);
+      if (this.googleApi.maps.geometry.poly.containsLocation(latLng, this.gamArea)) {
         propertyList.push(property);
       }
     });

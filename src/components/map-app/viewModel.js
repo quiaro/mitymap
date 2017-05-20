@@ -1,12 +1,11 @@
 const ko = require('knockout');
-const google = require('googleApi');
 const data = require('./data.json');
 const PropertyList = require('../../js/models/PropertyList.js');
 
 class ViewModel {
-  constructor() {
+  constructor(params) {
     // Did the google API load without errors?
-    this.googleApiLoaded = !!google;
+    this.googleApi = params.googleApi;
 
     // The complete property list will not vary since all properties are
     // loaded at once, so it's not necessary to declare an observable for it.
@@ -39,7 +38,7 @@ class ViewModel {
   refreshMapAndAttachMarkers() {
     const propertiesMap = new Map();
     const map = this.map;
-    const bounds = new google.maps.LatLngBounds();
+    const bounds = new this.googleApi.maps.LatLngBounds();
     // Array of markers that need to be attached to the map
     const pendingMarkers = [];
 
@@ -69,7 +68,7 @@ class ViewModel {
     // but don't attach them to the map yet
     propertiesMap.forEach((prop, id) => {
       const self = this;
-      const newMarker = new google.maps.Marker({
+      const newMarker = new this.googleApi.maps.Marker({
         position: prop.coordinates,
         title: prop.project,
         icon: 'http://maps.google.com/mapfiles/kml/pal5/icon12.png',
@@ -118,7 +117,7 @@ class ViewModel {
     this.selectedProperty(property);
     const selectedMarker = this.markers.get(property.id);
     // Add bouncing animation to selected marker
-    selectedMarker.setAnimation(google.maps.Animation.BOUNCE);
+    selectedMarker.setAnimation(this.googleApi.maps.Animation.BOUNCE);
   }
 
   /**

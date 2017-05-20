@@ -6,7 +6,8 @@
 </a>
 <div id="side-nav" class="side-nav" data-bind="switchPanel: isShowingFilters">
 
-  <filters-panel params="map: map,
+  <filters-panel params="googleApi: googleApi,
+                         map: map,
                          clickHandler: closeSideNav.bind($component),
                          updatePropertiesHandler: updatePropertiesHandler,
                          doneHandler: switchToProperties.bind($component),

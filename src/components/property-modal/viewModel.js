@@ -13,7 +13,7 @@ class ViewModel {
     this.isLoading = ko.observable(false);
     this.property = ko.observable();
     try {
-      this.vendorAPI = new VendorAPI(params.map);
+      this.vendorAPI = new VendorAPI(params.googleApi, params.map);
     } catch(e) {
       if (e instanceof ReferenceError) {
         console.error(e);
